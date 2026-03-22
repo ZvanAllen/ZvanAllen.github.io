@@ -3,8 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zack van Allen — Applied AI & Health Research</title>
+<title>Zack van Allen | Applied AI, Health Research, and Strategy</title>
+<meta name="description" content="Zack van Allen is a PhD-trained health researcher and applied AI leader building privacy-sensitive AI systems, evaluation frameworks, and governance programs for healthcare.">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://zackvanallen.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zack van Allen | Applied AI, Health Research, and Strategy">
+<meta property="og:description" content="PhD-trained researcher and applied AI leader working at the intersection of healthcare, machine learning, and implementation strategy.">
+<meta property="og:url" content="https://zackvanallen.com/">
+<meta property="og:site_name" content="zackvanallen.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Zack van Allen | Applied AI, Health Research, and Strategy">
+<meta name="twitter:description" content="PhD-trained researcher and applied AI leader building privacy-sensitive AI capabilities for healthcare.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0a0f'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%2300e5a0'%3Ezv%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -26,7 +40,10 @@
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
 
   body {
     background: var(--bg-primary);
@@ -37,12 +54,36 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  body.nav-open { overflow: hidden; }
+
+  a { color: inherit; }
+
   ::selection {
     background: var(--accent);
     color: var(--bg-primary);
   }
 
-  /* ─── NAV ─── */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -3rem;
+    background: var(--accent);
+    color: var(--bg-primary);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    z-index: 200;
+    transition: top 0.2s ease;
+  }
+  .skip-link:focus { top: 1rem; }
+
   nav {
     position: fixed;
     top: 0;
@@ -73,6 +114,7 @@
     display: flex;
     gap: 2rem;
     list-style: none;
+    align-items: center;
   }
 
   .nav-links a {
@@ -96,14 +138,23 @@
   }
   .nav-cta:hover { opacity: 0.85; color: var(--bg-primary) !important; }
 
-  /* ─── HAMBURGER ─── */
-  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
   .nav-toggle span {
-    display: block; width: 22px; height: 2px; background: var(--text-secondary);
-    margin: 5px 0; transition: all 0.3s; border-radius: 2px;
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text-secondary);
+    margin: 5px 0;
+    transition: all 0.3s;
+    border-radius: 2px;
   }
 
-  /* ─── HERO ─── */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -143,10 +194,54 @@
   }
 
   .hero-content {
-    max-width: 820px;
+    max-width: 1180px;
     margin: 0 auto;
     position: relative;
     z-index: 1;
+  }
+
+  .hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.9fr);
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .hero-copy {
+    min-width: 0;
+  }
+
+  .hero-media {
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.5s;
+  }
+
+  .hero-photo-card {
+    width: min(100%, 360px);
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.28);
+  }
+
+  .hero-photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 16%;
+    border-radius: 14px;
+  }
+
+  .hero-photo-caption {
+    margin-top: 0.9rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    line-height: 1.6;
   }
 
   .hero-tag {
@@ -174,21 +269,51 @@
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -0.035em;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     opacity: 0;
     animation: fadeUp 0.6s ease forwards 0.35s;
   }
   .hero h1 .accent { color: var(--accent); }
 
-  .hero-description {
-    font-size: 1.15rem;
+  .hero-subtitle {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
     color: var(--text-secondary);
-    line-height: 1.7;
-    max-width: 620px;
-    margin-bottom: 2.5rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.42s;
+  }
+
+  .hero-description {
+    font-size: 1.08rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 720px;
+    margin-bottom: 1.5rem;
     font-weight: 300;
     opacity: 0;
     animation: fadeUp 0.6s ease forwards 0.5s;
+  }
+
+  .hero-credentials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.58s;
+  }
+
+  .hero-credential {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    border: 1px solid var(--border-accent);
+    background: rgba(255,255,255,0.03);
+    border-radius: 999px;
+    padding: 0.45rem 0.8rem;
   }
 
   .hero-links {
@@ -250,8 +375,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ─── SECTIONS ─── */
-  section {
+  main section {
     padding: 6rem 2rem;
     max-width: 1100px;
     margin: 0 auto;
@@ -286,7 +410,13 @@
     line-height: 1.2;
   }
 
-  /* ─── PROJECTS ─── */
+  .section-intro {
+    max-width: 760px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-top: 0.9rem;
+  }
+
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -322,6 +452,13 @@
     transform: translateY(-3px);
   }
   .project-card:hover::before { opacity: 1; }
+
+  .project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+  }
 
   .project-badge {
     display: inline-block;
@@ -384,7 +521,6 @@
     font-weight: 600;
   }
 
-  /* ─── EXPERIENCE TIMELINE ─── */
   .timeline {
     position: relative;
     padding-left: 2.5rem;
@@ -449,7 +585,16 @@
     font-weight: 300;
   }
 
-  /* ─── PUBLICATIONS ─── */
+  .timeline-list {
+    margin-top: 0.8rem;
+    padding-left: 1.1rem;
+    color: var(--text-secondary);
+  }
+
+  .timeline-list li + li {
+    margin-top: 0.45rem;
+  }
+
   .pub-list {
     display: flex;
     flex-direction: column;
@@ -492,6 +637,47 @@
     font-style: italic;
   }
 
+  .pub-meta {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.35rem;
+  }
+
+  .pub-actions {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .pub-link {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .pub-abstract {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .pub-abstract summary {
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+  }
+
+  .pub-abstract p {
+    margin-top: 0.8rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
   .pub-expand {
     margin-top: 2rem;
     text-align: center;
@@ -513,7 +699,6 @@
     transform: translateY(-1px);
   }
 
-  /* ─── EDUCATION ─── */
   .edu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -552,7 +737,6 @@
     font-family: var(--font-mono);
   }
 
-  /* ─── TOOLS ─── */
   .tools-row {
     display: flex;
     flex-wrap: wrap;
@@ -574,7 +758,39 @@
     color: var(--accent);
   }
 
-  /* ─── FOOTER ─── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+
+  .info-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.45rem;
+  }
+
+  .info-card-meta {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .info-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
   footer {
     border-top: 1px solid var(--border);
     padding: 3rem 2rem;
@@ -612,7 +828,6 @@
     font-family: var(--font-mono);
   }
 
-  /* ─── DIVIDER ─── */
   .section-divider {
     max-width: 1100px;
     margin: 0 auto;
@@ -624,10 +839,9 @@
     background: var(--border);
   }
 
-  /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.25rem; }
-    .nav-links { 
+    .nav-links {
       display: none;
       position: fixed;
       top: 0;
@@ -647,14 +861,15 @@
     .nav-toggle { display: block; z-index: 101; }
 
     .hero { padding: 7rem 1.25rem 3rem; min-height: auto; }
+    .hero-layout { grid-template-columns: 1fr; }
     .hero h1 { font-size: 2.2rem; }
     .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
-    section { padding: 4rem 1.25rem; }
+    main section { padding: 4rem 1.25rem; }
     .projects-grid { grid-template-columns: 1fr; }
+    .cards-grid { grid-template-columns: 1fr; }
     .edu-grid { grid-template-columns: 1fr; }
   }
 
-  /* ─── SCROLL REVEAL ─── */
   .reveal {
     opacity: 0;
     transform: translateY(24px);
@@ -664,48 +879,82 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+  }
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<!-- ═══ NAVIGATION ═══ -->
-<nav>
+<nav aria-label="Primary">
   <a href="#" class="nav-logo">zva<span>/</span>portfolio</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#projects" onclick="closeNav()">Projects</a></li>
     <li><a href="#experience" onclick="closeNav()">Experience</a></li>
     <li><a href="#publications" onclick="closeNav()">Publications</a></li>
+    <li><a href="#grants" onclick="closeNav()">Grants</a></li>
+    <li><a href="#talks" onclick="closeNav()">Talks</a></li>
     <li><a href="#education" onclick="closeNav()">Education</a></li>
-    <li><a href="mailto:vanallen.22@gmail.com" class="nav-cta" onclick="closeNav()">Contact</a></li>
+    <li><a href="Zack_van_Allen_CV%20-%20March%202026.pdf" download class="nav-cta" onclick="closeNav()">Download CV</a></li>
   </ul>
-  <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- ═══ HERO ═══ -->
 <header class="hero">
   <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-tag">Applied AI · Health Research · Strategy</div>
+  <div class="hero-content hero-layout">
+    <div class="hero-copy">
+    <div class="hero-tag">Applied AI &bull; Health Research &bull; Strategy</div>
     <h1>Zack van Allen<br><span class="accent">PhD, MBA</span></h1>
+    <p class="hero-subtitle">Senior Research Associate, University of Ottawa</p>
     <p class="hero-description">
-      Applied AI leader translating complex healthcare problems into scalable, privacy-sensitive AI capabilities. I build adoption programs, governance frameworks, and working prototypes that improve clinical workflows and decision quality.
+      PhD-trained health researcher and applied AI leader translating complex clinical and organizational problems into privacy-sensitive AI systems, evaluation frameworks, and implementation strategy.
     </p>
+    <p class="hero-description">
+      My work spans peer-reviewed research, health-system grants, healthcare AI governance, and working prototypes for triage, admissions, and scholarly feedback. I focus on building tools that are credible to researchers, practical for clinicians, and deployable inside real-world constraints.
+    </p>
+    <div class="hero-credentials">
+      <span class="hero-credential">20+ peer-reviewed publications</span>
+      <span class="hero-credential">CIHR Doctoral Award</span>
+      <span class="hero-credential">Mitacs-Banting Fellow</span>
+      <span class="hero-credential">AI Implementation Researcher</span>
+    </div>
     <div class="hero-links">
-      <a href="https://github.com/ZvanAllen" class="hero-link" target="_blank">
+      <a href="Zack_van_Allen_CV%20-%20March%202026.pdf" download class="hero-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+        Download CV
+      </a>
+      <a href="https://github.com/ZvanAllen" class="hero-link" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
         GitHub
       </a>
-      <a href="https://scholar.google.ca/citations?user=ukUBURoAAAAJ&hl=en" class="hero-link" target="_blank">
+      <a href="https://scholar.google.ca/citations?user=ukUBURoAAAAJ&hl=en" class="hero-link" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
         Google Scholar
       </a>
-      <a href="https://www.linkedin.com/in/zack-van-allen-phd-mba-1a4377a2/" class="hero-link" target="_blank">
+      <a href="https://www.linkedin.com/in/zack-van-allen-phd-mba-1a4377a2/" class="hero-link" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         LinkedIn
       </a>
-      <a href="https://bsky.app/profile/zackvanallen.bsky.social" class="hero-link" target="_blank">
+      <a href="https://x.com/Zack_van_Allen" class="hero-link" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16"/><path d="M20 4L4 20"/></svg>
+        X
+      </a>
+      <a href="https://bsky.app/profile/zackvanallen.bsky.social" class="hero-link" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"/></svg>
         Bluesky
       </a>
@@ -713,254 +962,558 @@
     <div class="hero-stats">
       <div>
         <div class="stat-number">10+</div>
-        <div class="stat-label">Years Experience</div>
+        <div class="stat-label">Years in Research</div>
       </div>
       <div>
         <div class="stat-number">20+</div>
         <div class="stat-label">Publications</div>
       </div>
       <div>
-        <div class="stat-number">4</div>
-        <div class="stat-label">AI Prototypes Shipped</div>
+        <div class="stat-number">6+</div>
+        <div class="stat-label">Funded Initiatives</div>
+      </div>
+    </div>
+    </div>
+    <div class="hero-media">
+      <div class="hero-photo-card">
+        <img src="headshot-web.jpg" alt="Zack van Allen seated in front of an AI in education workshop display." class="hero-photo">
+        <p class="hero-photo-caption">Applied AI in health systems, medical education, and implementation research.</p>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ═══ PROJECTS ═══ -->
-<div class="section-divider"><hr></div>
-<section id="projects">
-  <div class="section-header reveal">
-    <div class="section-label">Featured Work</div>
-    <h2 class="section-title">Applied AI Programs &amp; Prototypes</h2>
-  </div>
+<main id="main">
+  <div class="section-divider"><hr></div>
+  <section id="projects">
+    <div class="section-header reveal">
+      <div class="section-label">Featured Work</div>
+      <h2 class="section-title">Applied AI Programs, Research, and Prototypes</h2>
+      <p class="section-intro">Selected examples of healthcare AI strategy, evaluation, and implementation work spanning governance, decision support, model assessment, and competitive experimentation.</p>
+    </div>
 
-  <div class="projects-grid">
-    <div class="project-card reveal">
-      <span class="project-badge badge-lead">Program Lead</span>
-      <h3 class="project-title">Organizational AI Adoption Roadmap & Governance</h3>
-      <p class="project-description">
-        Built a comprehensive AI adoption roadmap for a multi-portfolio university department. Established governance mechanisms including working policies, approved tool lists, data-use guidance, a reusable prompt library, and micro-grants for experimentation.
-      </p>
-      <div class="project-tags">
-        <span class="project-tag">AI Strategy</span>
-        <span class="project-tag">Governance</span>
-        <span class="project-tag">Change Mgmt</span>
-        <span class="project-tag">Implementation Science</span>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <span class="project-badge badge-lead">Program Lead</span>
+        <h3 class="project-title">Organizational AI Adoption Roadmap and Governance</h3>
+        <p class="project-description">
+          Built a comprehensive AI adoption roadmap for a multi-portfolio university department. Established governance mechanisms including working policies, approved tool lists, data-use guidance, a reusable prompt library, and micro-grants for experimentation.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">AI Strategy</span>
+          <span class="project-tag">Governance</span>
+          <span class="project-tag">Change Mgmt</span>
+          <span class="project-tag">Implementation Science</span>
+        </div>
+        <div class="project-metric">Structured around <strong>5 pillars</strong>: People &bull; AI Governance &bull; Data Governance &bull; Technology &bull; Process</div>
       </div>
-      <div class="project-metric">Structured around <strong>5 pillars</strong>: People · AI Governance · Data Governance · Technology · Process</div>
-    </div>
 
-    <div class="project-card reveal">
-      <span class="project-badge badge-dev">ML / AI Lead</span>
-      <h3 class="project-title">AI-Driven Medical School Admissions Scoring</h3>
-      <p class="project-description">
-        Designed an AI-assisted scoring pipeline for ~2,200 autobiographical sketches per admissions cycle with bilingual support and equity/bias auditing baked into the evaluation framework.
-      </p>
-      <div class="project-tags">
-        <span class="project-tag">NLP</span>
-        <span class="project-tag">LLMs</span>
-        <span class="project-tag">Bias Auditing</span>
-        <span class="project-tag">Bilingual</span>
+      <div class="project-card reveal">
+        <span class="project-badge badge-dev">ML / AI Lead</span>
+        <h3 class="project-title">AI-Driven Medical School Admissions Scoring</h3>
+        <p class="project-description">
+          Designed an AI-assisted scoring pipeline for roughly 2,200 autobiographical sketches per admissions cycle with bilingual support and equity auditing built directly into the evaluation framework.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">NLP</span>
+          <span class="project-tag">LLMs</span>
+          <span class="project-tag">Bias Auditing</span>
+          <span class="project-tag">Bilingual</span>
+        </div>
+        <div class="project-metric">Target performance: <strong>&gt;= 0.70 kappa</strong>, <strong>&gt;= 0.80 AUC</strong>, with <strong>~550 faculty hours/year</strong> potentially reclaimed</div>
       </div>
-      <div class="project-metric">Target: <strong>≥0.70 κ</strong>, <strong>≥0.80 AUC</strong> — projected <strong>~550 faculty hrs/yr</strong> reclaimed</div>
-    </div>
 
-    <div class="project-card reveal">
-      <span class="project-badge badge-design">Technical Design + Prototype</span>
-      <h3 class="project-title">AI-Powered Triage & Referral Intake Platform</h3>
-      <p class="project-description">
-        Developing a locally-hosted decision-support tool that mirrors clinical routing decisions and matches referrals to services. Fully on-premise architecture keeps sensitive data within the network.
-      </p>
-      <div class="project-tags">
-        <span class="project-tag">Local LLM</span>
-        <span class="project-tag">On-Prem</span>
-        <span class="project-tag">Workflow Automation</span>
-        <span class="project-tag">Privacy-First</span>
+      <div class="project-card reveal">
+        <span class="project-badge badge-design">Technical Design + Prototype</span>
+        <h3 class="project-title">AI-Powered Triage and Referral Intake Platform</h3>
+        <p class="project-description">
+          Developing a locally hosted decision-support tool that mirrors clinical routing decisions and matches referrals to services. The architecture keeps sensitive data on-premise while supporting operational automation.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Local LLM</span>
+          <span class="project-tag">On-Prem</span>
+          <span class="project-tag">Workflow Automation</span>
+          <span class="project-tag">Privacy-First</span>
+        </div>
+        <div class="project-metric">Architecture: <strong>local LLM</strong> + workflow automation + datastore</div>
       </div>
-      <div class="project-metric">Architecture: <strong>local LLM</strong> + workflow automation + datastore</div>
-    </div>
 
-    <div class="project-card reveal">
-      <span class="project-badge badge-dev">Co-Developer / Evaluator</span>
-      <h3 class="project-title">Automating Scholarly Feedback with AI</h3>
-      <p class="project-description">
-        Built a rubric-aligned feedback assistant using open-weight LLMs, then rigorously evaluated ~240 feedback reports in blinded comparisons against expert human evaluators to quantify quality and consistency.
-      </p>
-      <div class="project-tags">
-        <span class="project-tag">Open-Weight LLMs</span>
-        <span class="project-tag">Evaluation</span>
-        <span class="project-tag">Medical Education</span>
+      <div class="project-card reveal">
+        <span class="project-badge badge-dev">Co-Developer / Evaluator</span>
+        <h3 class="project-title">Automating Scholarly Feedback with AI</h3>
+        <p class="project-description">
+          Built a rubric-aligned feedback assistant using open-weight LLMs, then evaluated roughly 240 feedback reports in blinded comparisons against expert human reviewers to measure quality and consistency.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Open-Weight LLMs</span>
+          <span class="project-tag">Evaluation</span>
+          <span class="project-tag">Medical Education</span>
+        </div>
+        <div class="project-metric">Blinded evaluation: <strong>~240 reports</strong> compared against expert benchmarks</div>
       </div>
-      <div class="project-metric">Blinded evaluation: <strong>~240 reports</strong> compared against expert benchmarks</div>
-    </div>
-  </div>
-</section>
 
-<!-- ═══ EXPERIENCE ═══ -->
-<div class="section-divider"><hr></div>
-<section id="experience">
-  <div class="section-header reveal">
-    <div class="section-label">Career</div>
-    <h2 class="section-title">Experience</h2>
-  </div>
+      <div class="project-card reveal">
+        <span class="project-badge badge-lead">AI Evidence Synthesis</span>
+        <h3 class="project-title">Human-in-the-Loop Automation for Evidence Synthesis</h3>
+        <p class="project-description">
+          Designing an AI-assisted workflow to search, screen, verify, and summarize published pediatric evidence for clinician-facing guidance. The goal is to shorten update cycles from months to days while keeping every recommendation transparent, source-linked, and reviewable by experts.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Evidence Synthesis</span>
+          <span class="project-tag">Human-in-the-Loop</span>
+          <span class="project-tag">Automation</span>
+          <span class="project-tag">Clinical Guidance</span>
+        </div>
+        <div class="project-metric">Outcome: <strong>living evidence tables</strong> and <strong>clinician-ready summaries</strong> with linked source verification</div>
+      </div>
 
-  <div class="timeline">
-    <div class="timeline-item reveal">
-      <div class="timeline-date">2024 — Present</div>
-      <div class="timeline-role">Senior Research Associate</div>
-      <div class="timeline-org">uOttawa, Department of Family Medicine</div>
-      <div class="timeline-detail">Applied data science & AI strategy. Leading enterprise AI adoption, governance design, pilot evaluation, and translating clinical workflows into proof-of-concepts.</div>
+      <a class="project-card project-card-link reveal" href="https://www.kaggle.com/competitions/med-gemma-impact-challenge/writeups/universal-medical-ingestion-engine" target="_blank" rel="noopener noreferrer" aria-label="Open Kaggle writeup for Universal Medical Ingestion Engine">
+        <span class="project-badge badge-design">Competition Build</span>
+        <h3 class="project-title">Kaggle: Universal Medical Ingestion Engine</h3>
+        <p class="project-description">
+          Built and documented a competition entry for the Med Gemma Impact Challenge focused on medical-document ingestion and structured downstream use. Strong fit with the rest of the site because it shows hands-on applied experimentation outside institutional projects.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Kaggle</span>
+          <span class="project-tag">Document AI</span>
+          <span class="project-tag">Medical Data</span>
+          <span class="project-tag">Rapid Prototyping</span>
+        </div>
+        <div class="project-metric">Read the public writeup on <strong>Kaggle</strong></div>
+      </a>
     </div>
-    <div class="timeline-item reveal">
-      <div class="timeline-date">2023 — 2024</div>
-      <div class="timeline-role">Postdoctoral Research Fellow</div>
-      <div class="timeline-org">University of Ottawa · Mitacs-Banting</div>
-      <div class="timeline-detail">Predictive modeling on a national cohort (n≈40k) for functional dependence classification. Quasi-experimental analyses using propensity-score matching and multilevel modeling.</div>
-    </div>
-    <div class="timeline-item reveal">
-      <div class="timeline-date">2018 — 2024</div>
-      <div class="timeline-role">Research Associate / Coordinator</div>
-      <div class="timeline-org">Ottawa Hospital Research Institute</div>
-      <div class="timeline-detail">Multi-site behavioral and clinical research. Unsupervised learning for behavioral profiling, systematic reviews, and cross-institutional project management.</div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ═══ PUBLICATIONS ═══ -->
-<div class="section-divider"><hr></div>
-<section id="publications">
-  <div class="section-header reveal">
-    <div class="section-label">Research Output</div>
-    <h2 class="section-title">Selected First-Author Publications</h2>
-  </div>
-
-  <div class="pub-list">
-    <a href="https://www.medrxiv.org/content/10.1101/2024.07.15.24310429v1" target="_blank" class="pub-item reveal">
-      <div class="pub-year">2026</div>
-      <div class="pub-title">Can AI Match Human Experts? Evaluating LLM-Generated Feedback on Resident Scholarly Projects</div>
-      <div class="pub-journal">medRxiv (preprint)</div>
-    </a>
-    <a href="https://doi.org/10.1101/2023.09.14.23295576" target="_blank" class="pub-item reveal">
-      <div class="pub-year">2025</div>
-      <div class="pub-title">Prospective Classification of Functional Dependence: Machine Learning and 39,927 CLSA Participants</div>
-      <div class="pub-journal">Physical Therapy</div>
-    </a>
-    <a href="https://doi.org/10.31234/osf.io/kmubv" target="_blank" class="pub-item reveal">
-      <div class="pub-year">2024</div>
-      <div class="pub-title">Pre-stroke Physical Activity Matters for Functional Limitations: A Longitudinal Control Study of 12,860 Participants</div>
-      <div class="pub-journal">Physical Therapy Journal</div>
-    </a>
-    <a href="https://doi.org/10.31234/osf.io/kmubv" target="_blank" class="pub-item reveal">
-      <div class="pub-year">2024</div>
-      <div class="pub-title">Multiple-Behaviour Temporal Network Analysis During COVID-19</div>
-      <div class="pub-journal">British Journal of Health Psychology</div>
-    </a>
-    <a href="https://doi.org/10.1093/abm/kaad008" target="_blank" class="pub-item reveal">
-      <div class="pub-year">2023</div>
-      <div class="pub-title">Clustering of Health Behaviours in Canadians: A Multiple Behaviour Analysis of CLSA Data</div>
-      <div class="pub-journal">Annals of Behavioral Medicine</div>
-    </a>
-  </div>
-  <div class="pub-expand reveal">
-    <a href="https://scholar.google.ca/citations?user=ukUBURoAAAAJ&hl=en" target="_blank">View all 20+ publications →</a>
-  </div>
-</section>
-
-<!-- ═══ EDUCATION ═══ -->
-<div class="section-divider"><hr></div>
-<section id="education">
-  <div class="section-header reveal">
-    <div class="section-label">Education</div>
-    <h2 class="section-title">Academic Background</h2>
-  </div>
-
-  <div class="edu-grid">
-    <div class="edu-card reveal">
-      <div class="edu-degree">Postdoctoral Fellowship</div>
-      <div class="edu-school">University of Ottawa</div>
-      <div class="edu-year">2023 — 2024</div>
-      <div class="edu-note">Mitacs-Banting Fellow</div>
+  <div class="section-divider"><hr></div>
+  <section id="experience">
+    <div class="section-header reveal">
+      <div class="section-label">Career</div>
+      <h2 class="section-title">Experience</h2>
+      <p class="section-intro">A research and implementation portfolio spanning clinical AI prototypes, health services evaluation, behavior change science, medical education, and system-level translation.</p>
     </div>
-    <div class="edu-card reveal">
-      <div class="edu-degree">PhD, Psychology</div>
-      <div class="edu-school">University of Ottawa</div>
-      <div class="edu-year">2019 — 2023</div>
-      <div class="edu-note">CIHR Doctoral Scholarship</div>
-    </div>
-    <div class="edu-card reveal">
-      <div class="edu-degree">MBA</div>
-      <div class="edu-school">Carleton University</div>
-      <div class="edu-year">2017 — 2019</div>
-    </div>
-    <div class="edu-card reveal">
-      <div class="edu-degree">BA, Psychology</div>
-      <div class="edu-school">Carleton University</div>
-      <div class="edu-year">2009 — 2014</div>
-    </div>
-  </div>
-</section>
 
-<!-- ═══ TOOLS ═══ -->
-<div class="section-divider"><hr></div>
-<section id="tools">
-  <div class="section-header reveal">
-    <div class="section-label">Toolkit</div>
-    <h2 class="section-title">Tools & Methods</h2>
-  </div>
-  <div class="tools-row reveal">
-    <span class="tool-chip">Python</span>
-    <span class="tool-chip">R</span>
-    <span class="tool-chip">SQL</span>
-    <span class="tool-chip">Git</span>
-    <span class="tool-chip">pandas</span>
-    <span class="tool-chip">scikit-learn</span>
-    <span class="tool-chip">statsmodels</span>
-    <span class="tool-chip">NumPy</span>
-    <span class="tool-chip">tidyverse</span>
-    <span class="tool-chip">NLP / LLMs</span>
-    <span class="tool-chip">RAG</span>
-    <span class="tool-chip">ML Evaluation</span>
-    <span class="tool-chip">Causal Inference</span>
-    <span class="tool-chip">Predictive Modeling</span>
-    <span class="tool-chip">Claude Code</span>
-    <span class="tool-chip">Codex</span>
-  </div>
-</section>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-date">2024-present</div>
+        <div class="timeline-role">Senior Research Associate</div>
+        <div class="timeline-org">uOttawa Department of Family Medicine</div>
+        <div class="timeline-detail">
+          Building and evaluating AI-enabled work in primary care, medical education, and health system operations.
+          <ul class="timeline-list">
+            <li>Building an AI-first triage and referral system for clinical intake and routing.</li>
+            <li>Building an AI Innovation Hub for primary care.</li>
+            <li>Evaluating the utility of AI tools for medical education applications.</li>
+            <li>Developing AI workflows for automating administrative tasks.</li>
+            <li>Providing research methods consulting services to faculty and physicians.</li>
+            <li>Using implementation science to promote AI adoption in the workplace.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-date">2023-2024</div>
+        <div class="timeline-role">Mitacs-Banting Discovery Postdoctoral Fellow</div>
+        <div class="timeline-org">University of Ottawa</div>
+        <div class="timeline-detail">
+          Led machine learning and longitudinal modeling work focused on aging, stroke, and functional dependence.
+          <ul class="timeline-list">
+            <li>Used machine learning for prospective classification of functional dependence in older adults.</li>
+            <li>Applied multilevel modeling to uncover the role of physical activity in stroke survivor recovery.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-date">2023-2024</div>
+        <div class="timeline-role">Clinical Research Associate</div>
+        <div class="timeline-org">Ottawa Hospital Research Institute</div>
+        <div class="timeline-detail">
+          Continued applied health research with a mix of quantitative analysis, systematic synthesis, and implementation-focused work.
+          <ul class="timeline-list">
+            <li>Applied cluster analysis to identify behavioral profiles for targeted health interventions.</li>
+            <li>Conducted meta-analysis on predictors of plasma donation intention in a Canadian sample.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-date">2018-2023</div>
+        <div class="timeline-role">Clinical Research Coordinator</div>
+        <div class="timeline-org">Ottawa Hospital Research Institute</div>
+        <div class="timeline-detail">
+          Coordinated multi-site studies and contributed to both behavioral medicine and clinical research programs.
+          <ul class="timeline-list">
+            <li>Led a multi-province project on diabetic retinopathy screening in minority groups.</li>
+            <li>Compared machine learning algorithms for predicting healthy aging and healthcare utilization.</li>
+            <li>Served on the executive committee for a multi-hospital study on organ donation decision-making.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-date">2017-2018</div>
+        <div class="timeline-role">Research Coordinator</div>
+        <div class="timeline-org">University of Ottawa</div>
+        <div class="timeline-detail">
+          Created educational content and training resources for medical learners.
+          <ul class="timeline-list">
+            <li>Created educational modules for first-year medical students on crisis resource management, including leadership, communication, teamwork, and situational awareness.</li>
+            <li>Built stress inoculation training content covering mindfulness, relaxation, and emotional regulation strategies.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-date">2015-2017</div>
+        <div class="timeline-role">Research Assistant</div>
+        <div class="timeline-org">Department of National Defence</div>
+        <div class="timeline-detail">
+          Worked on applied military leadership research and scientific reporting.
+          <ul class="timeline-list">
+            <li>Co-authored two scientific reports detailing the construction of leadership profiles for Major-General and Rear-Admiral positions within the Canadian Armed Forces.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- ═══ FOOTER ═══ -->
+  <div class="section-divider"><hr></div>
+  <section id="publications">
+    <div class="section-header reveal">
+      <div class="section-label">Research Output</div>
+      <h2 class="section-title">First-Author Publications</h2>
+      <p class="section-intro">Expanded entries below list the full set of first-author peer-reviewed publications from the CV. The abstract text is paraphrased into concise summaries for readability.</p>
+    </div>
+
+    <div class="pub-list">
+      <article class="pub-item reveal">
+        <div class="pub-year">2026</div>
+        <div class="pub-title">Can AI Match Human Experts? Evaluating LLM-Generated Feedback on Resident Scholarly Projects</div>
+        <div class="pub-journal">medRxiv (preprint)</div>
+        <div class="pub-meta">van Allen, Z., Forgues-Martel, S., Venables, M. J., Ghanney, Y., Villeneuve, A., Dongmo, J., Ahmed, M., Archibald, D., and Jolin-Dahel, K.</div>
+        <div class="pub-actions">
+          <a class="pub-link" href="https://doi.org/10.64898/2026.03.04.26346878" target="_blank" rel="noopener noreferrer">Open preprint</a>
+        </div>
+        <details class="pub-abstract">
+          <summary>Abstract summary</summary>
+          <p>Assesses whether LLM-generated feedback on resident scholarly work can approach expert human feedback in quality, usefulness, and consistency under blinded evaluation conditions.</p>
+        </details>
+      </article>
+      <article class="pub-item reveal">
+        <div class="pub-year">2025</div>
+        <div class="pub-title">Prospective Classification of Functional Dependence: Insights from Machine Learning and the Canadian Longitudinal Study on Aging</div>
+        <div class="pub-journal">Physiotherapy Canada</div>
+        <div class="pub-actions">
+          <a class="pub-link" href="https://doi.org/10.3138/ptc-2024-0136" target="_blank" rel="noopener noreferrer">Open paper</a>
+        </div>
+        <details class="pub-abstract">
+          <summary>Abstract summary</summary>
+          <p>Uses machine learning on longitudinal aging data to prospectively classify functional dependence and identify a compact set of predictors that may support earlier risk stratification in older adults.</p>
+        </details>
+      </article>
+      <article class="pub-item reveal">
+        <div class="pub-year">2024</div>
+        <div class="pub-title">Prestroke Physical Activity Matters for Functional Limitations: A Longitudinal Case-Control Study of 12,860 Participants</div>
+        <div class="pub-journal">Physical Therapy</div>
+        <div class="pub-actions">
+          <a class="pub-link" href="https://doi.org/10.1093/ptj/pzae094" target="_blank" rel="noopener noreferrer">Open paper</a>
+        </div>
+        <details class="pub-abstract">
+          <summary>Abstract summary</summary>
+          <p>Shows that people who were more physically active before stroke had lower odds of later functional limitations, highlighting prestroke activity as a meaningful protective factor in recovery-related outcomes.</p>
+        </details>
+      </article>
+      <article class="pub-item reveal">
+        <div class="pub-year">2024</div>
+        <div class="pub-title">A Multiple Behaviour Temporal Network Analysis for Health Behaviours During COVID-19</div>
+        <div class="pub-journal">British Journal of Health Psychology</div>
+        <div class="pub-actions">
+          <a class="pub-link" href="https://doi.org/10.1111/bjhp.12750" target="_blank" rel="noopener noreferrer">Open paper</a>
+        </div>
+        <details class="pub-abstract">
+          <summary>Abstract summary</summary>
+          <p>Models several health behaviours as a temporal network during the pandemic to examine how behaviour changes co-occurred and influenced one another over time rather than treating each behaviour in isolation.</p>
+        </details>
+      </article>
+      <article class="pub-item reveal">
+        <div class="pub-year">2023</div>
+        <div class="pub-title">Clustering of Health Behaviors in Canadians: A Multiple Behavior Analysis of Data from the Canadian Longitudinal Study on Aging</div>
+        <div class="pub-journal">Annals of Behavioral Medicine</div>
+        <div class="pub-actions">
+          <a class="pub-link" href="https://doi.org/10.1093/abm/kaad008" target="_blank" rel="noopener noreferrer">Open paper</a>
+        </div>
+        <details class="pub-abstract">
+          <summary>Abstract summary</summary>
+          <p>Identifies distinct health behaviour profiles in a large Canadian aging cohort and shows how combinations of behaviours, not just single behaviours, help characterize health risk patterns across the population.</p>
+        </details>
+      </article>
+      <article class="pub-item reveal">
+        <div class="pub-year">2021</div>
+        <div class="pub-title">Clustering of Unhealthy Behaviors: Protocol for a Multiple Behavior Analysis of Data from the Canadian Longitudinal Study on Aging</div>
+        <div class="pub-journal">JMIR Research Protocols</div>
+        <div class="pub-actions">
+          <a class="pub-link" href="https://doi.org/10.2196/24887" target="_blank" rel="noopener noreferrer">Open paper</a>
+        </div>
+        <details class="pub-abstract">
+          <summary>Abstract summary</summary>
+          <p>Outlines the rationale, variables, and analytic plan for studying how unhealthy behaviours cluster together in the CLSA, providing a methodological blueprint for the later empirical multiple-behaviour analyses.</p>
+        </details>
+      </article>
+      <article class="pub-item reveal">
+        <div class="pub-year">2021</div>
+        <div class="pub-title">Enacted Extraversion as a Well-Being Enhancing Strategy in Everyday Life: Testing Across Three, Week-Long Interventions</div>
+        <div class="pub-journal">Collabra: Psychology</div>
+        <div class="pub-actions">
+          <a class="pub-link" href="https://doi.org/10.1525/collabra.29931" target="_blank" rel="noopener noreferrer">Open paper</a>
+        </div>
+        <details class="pub-abstract">
+          <summary>Abstract summary</summary>
+          <p>Tests whether deliberately acting more extraverted in daily life improves well-being across repeated week-long interventions, showing benefits for positive affect while also clarifying the boundaries of the effect.</p>
+        </details>
+      </article>
+      <article class="pub-item reveal">
+        <div class="pub-year">2021</div>
+        <div class="pub-title">Barriers to and Enablers of Attendance at Diabetic Retinopathy Screening Experienced by Immigrants to Canada From Multiple Cultural and Linguistic Minority Groups</div>
+        <div class="pub-journal">Diabetic Medicine</div>
+        <div class="pub-actions">
+          <a class="pub-link" href="https://doi.org/10.1111/dme.14429" target="_blank" rel="noopener noreferrer">Open paper</a>
+        </div>
+        <details class="pub-abstract">
+          <summary>Abstract summary</summary>
+          <p>Explores why immigrant patients may or may not attend diabetic retinopathy screening, highlighting the role of language, logistics, system navigation, trust, and culturally responsive care.</p>
+        </details>
+      </article>
+      <article class="pub-item reveal">
+        <div class="pub-year">2018</div>
+        <div class="pub-title">Testing Trait-State Isomorphism in a New Domain: An Exploratory Manipulation of Openness to Experience</div>
+        <div class="pub-journal">Frontiers in Psychology</div>
+        <div class="pub-actions">
+          <a class="pub-link" href="https://doi.org/10.3389/fpsyg.2018.01964" target="_blank" rel="noopener noreferrer">Open paper</a>
+        </div>
+        <details class="pub-abstract">
+          <summary>Abstract summary</summary>
+          <p>Examines whether state-level changes in openness-related behaviour mirror the broader personality trait, using an exploratory manipulation to test trait-state isomorphism in a new domain.</p>
+        </details>
+      </article>
+    </div>
+    <div class="pub-expand reveal">
+      <a href="https://scholar.google.ca/citations?user=ukUBURoAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">View all publications</a>
+    </div>
+  </section>
+
+  <div class="section-divider"><hr></div>
+  <section id="grants">
+    <div class="section-header reveal">
+      <div class="section-label">Funding</div>
+      <h2 class="section-title">Selected Grants and Fellowships</h2>
+    </div>
+    <div class="cards-grid">
+      <article class="info-card reveal">
+        <div class="info-card-meta">$140,000</div>
+        <h3 class="info-card-title">Mitacs-Banting Discovery Postdoctoral Fellowship</h3>
+        <p>Supported postdoctoral work on physical activity engagement, functional dependence, and aging.</p>
+      </article>
+      <article class="info-card reveal">
+        <div class="info-card-meta">$105,000</div>
+        <h3 class="info-card-title">CIHR Frederick Banting and Charles Best CGS-D</h3>
+        <p>Doctoral award supporting research on complexity science, network analysis, and health behaviour change.</p>
+      </article>
+      <article class="info-card reveal">
+        <div class="info-card-meta">$96,788</div>
+        <h3 class="info-card-title">EmPOWERing Primary Care Settings to Use Digital Health Interventions for Chronic Pain</h3>
+        <p>CIHR catalyst funding for digital health implementation in primary care settings.</p>
+      </article>
+      <article class="info-card reveal">
+        <div class="info-card-meta">$320,536</div>
+        <h3 class="info-card-title"><a href="https://popcorn-statement.org/4-team.html" target="_blank" rel="noopener noreferrer">POPCORN Reporting Guidelines for Modelling Studies</a></h3>
+        <p>Development of reporting guidelines for modelling studies of noncommunicable diseases through a multi-investigator CIHR-funded methods initiative.</p>
+      </article>
+      <article class="info-card reveal">
+        <div class="info-card-meta">$952,426</div>
+        <h3 class="info-card-title">Optimizing Pandemic Preparedness Through Ongoing Assessment of Public Attitudes, Intentions, and Behaviours</h3>
+        <p>Large CIHR-funded team grant extending the iCARE study to support pandemic preparedness and public health decision-making.</p>
+      </article>
+      <article class="info-card reveal">
+        <div class="info-card-meta">$15,000</div>
+        <h3 class="info-card-title">COMPASS: Consensus on Medical Priorities and AI Solutions in Primary Care</h3>
+        <p>Seed funding to identify priority areas for AI application and implementation in primary care.</p>
+      </article>
+      <article class="info-card reveal">
+        <div class="info-card-meta">$135,000</div>
+        <h3 class="info-card-title">AsthmaWISE</h3>
+        <p>Team funding for a multimodal conversational AI companion designed to support trustworthy asthma education and guidance.</p>
+      </article>
+      <article class="info-card reveal">
+        <div class="info-card-meta">$135,000</div>
+        <h3 class="info-card-title">Modernizing the Rourke Baby Record</h3>
+        <p>AI-enabled evidence synthesis work to support more timely and systematic updates to a major pediatric care resource.</p>
+      </article>
+      <article class="info-card reveal">
+        <div class="info-card-meta">$186,120</div>
+        <h3 class="info-card-title">Co-Designing Francophone AI Health Tools With Patients and Caregivers</h3>
+        <p>AMUM-funded francophone co-design project focused on AI-enabled health tools built with patients and caregivers at the center of the design process.</p>
+      </article>
+    </div>
+  </section>
+
+  <div class="section-divider"><hr></div>
+  <section id="talks">
+    <div class="section-header reveal">
+      <div class="section-label">Speaking</div>
+      <h2 class="section-title">Invited Talks</h2>
+    </div>
+    <div class="cards-grid">
+      <article class="info-card reveal">
+        <div class="info-card-meta">June 4, 2025</div>
+        <h3 class="info-card-title">Artificial Intelligence in Elderly Care: Looking to the Future</h3>
+        <p>Invited talk at the 16th Annual Care of the Elderly Conference, McMaster University.</p>
+      </article>
+      <article class="info-card reveal">
+        <div class="info-card-meta">April 27, 2025</div>
+        <h3 class="info-card-title">Artificial Intelligence in Primary Care: Envisioning the Future Integration of AI in Family Medicine</h3>
+        <p>Invited talk delivered to the Faculty Retreat of the Department of Family Medicine.</p>
+      </article>
+      <article class="info-card reveal">
+        <div class="info-card-meta">September 24, 2024</div>
+        <h3 class="info-card-title">The Impact of Physical Activity Pre-Stroke and the Insights From Machine Learning on Functional Dependence</h3>
+        <p>Invited webinar presented in the Centre of Excellence Webinar Series at Perley Health.</p>
+      </article>
+      <article class="info-card reveal">
+        <div class="info-card-meta">March 17, 2022</div>
+        <h3 class="info-card-title">Temporal Network Dynamics of Multiple Health Behaviours During the COVID-19 Pandemic</h3>
+        <p>Invited talk delivered to the Montreal Behavioural Medicine Centre.</p>
+      </article>
+    </div>
+  </section>
+  <div class="section-divider"><hr></div>
+  <section id="education">
+    <div class="section-header reveal">
+      <div class="section-label">Education</div>
+      <h2 class="section-title">Academic Background</h2>
+    </div>
+
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-degree">Postdoctoral Fellowship</div>
+        <div class="edu-school">University of Ottawa</div>
+        <div class="edu-year">2023-2024</div>
+        <div class="edu-note">Mitacs-Banting Fellow</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-degree">PhD, Psychology</div>
+        <div class="edu-school">University of Ottawa</div>
+        <div class="edu-year">2019-2023</div>
+        <div class="edu-note">CIHR Doctoral Scholarship</div>
+        <div class="edu-note">Dissertation: Modelling co-occurring and co-varying health behaviours: Applications of machine learning and network psychometrics</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-degree">MBA</div>
+        <div class="edu-school">Carleton University</div>
+        <div class="edu-year">2017-2019</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-degree">MA, Psychology</div>
+        <div class="edu-school">Carleton University</div>
+        <div class="edu-year">2014-2016</div>
+        <div class="edu-note">Thesis: An exploratory manipulation of openness to experience</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-degree">BA, Psychology</div>
+        <div class="edu-school">Carleton University</div>
+        <div class="edu-year">2009-2014</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"><hr></div>
+  <section id="tools">
+    <div class="section-header reveal">
+      <div class="section-label">Toolkit</div>
+      <h2 class="section-title">Tools and Methods</h2>
+    </div>
+    <div class="tools-row reveal">
+      <span class="tool-chip">Python</span>
+      <span class="tool-chip">R</span>
+      <span class="tool-chip">SQL</span>
+      <span class="tool-chip">Git</span>
+      <span class="tool-chip">pandas</span>
+      <span class="tool-chip">scikit-learn</span>
+      <span class="tool-chip">statsmodels</span>
+      <span class="tool-chip">NumPy</span>
+      <span class="tool-chip">tidyverse</span>
+      <span class="tool-chip">NLP / LLMs</span>
+      <span class="tool-chip">RAG</span>
+      <span class="tool-chip">ML Evaluation</span>
+      <span class="tool-chip">Causal Inference</span>
+      <span class="tool-chip">Predictive Modeling</span>
+      <span class="tool-chip">Claude Code</span>
+      <span class="tool-chip">Codex</span>
+    </div>
+  </section>
+</main>
+
 <footer>
   <div class="footer-inner">
     <div class="footer-links">
       <a href="mailto:vanallen.22@gmail.com">vanallen.22@gmail.com</a>
-      <a href="https://github.com/ZvanAllen" target="_blank">GitHub</a>
-      <a href="https://scholar.google.ca/citations?user=ukUBURoAAAAJ&hl=en" target="_blank">Google Scholar</a>
-      <a href="https://www.linkedin.com/in/zack-van-allen-phd-mba-1a4377a2/" target="_blank">LinkedIn</a>
-      <a href="https://bsky.app/profile/zackvanallen.bsky.social" target="_blank">Bluesky</a>
+      <a href="Zack_van_Allen_CV%20-%20March%202026.pdf" download>Download CV</a>
+      <a href="https://github.com/ZvanAllen" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://scholar.google.ca/citations?user=ukUBURoAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+      <a href="https://www.linkedin.com/in/zack-van-allen-phd-mba-1a4377a2/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://x.com/Zack_van_Allen" target="_blank" rel="noopener noreferrer">X</a>
+      <a href="https://bsky.app/profile/zackvanallen.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky</a>
     </div>
-    <div class="footer-copy">© 2026 Zack van Allen. Ontario, Canada.</div>
+    <div class="footer-copy">&copy; 2026 Zack van Allen. Ontario, Canada.</div>
   </div>
 </footer>
 
 <script>
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  const navLinks = document.getElementById('navLinks');
+  const navToggle = document.getElementById('navToggle');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-  // Mobile nav
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+  }
+
+  function setNavState(isOpen) {
+    navLinks.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    document.body.classList.toggle('nav-open', isOpen);
+  }
+
   function toggleNav() {
-    document.getElementById('navLinks').classList.toggle('open');
+    const isOpen = navLinks.classList.contains('open');
+    setNavState(!isOpen);
   }
+
   function closeNav() {
-    document.getElementById('navLinks').classList.remove('open');
+    setNavState(false);
   }
+
+  navToggle.addEventListener('click', toggleNav);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeNav();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      closeNav();
+    }
+  });
+
+  window.toggleNav = toggleNav;
+  window.closeNav = closeNav;
 </script>
 
 </body>
