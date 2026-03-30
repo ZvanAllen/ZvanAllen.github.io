@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Directed Content Analysis | Zack van Allen</title>
+<meta name="description" content="Long-form explainer on AI-directed content analysis, directed qualitative coding, theory-driven analysis, and staged AI workflows for health and implementation research.">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://zackvanallen.com/methods/ai-directed-content-analysis.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI-Directed Content Analysis | Zack van Allen">
+<meta property="og:description" content="A long-form methods explainer on directed content analysis, qualitative rigour, and staged AI-assisted workflows.">
+<meta property="og:url" content="https://zackvanallen.com/methods/ai-directed-content-analysis.html">
+<meta property="og:site_name" content="zackvanallen.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI-Directed Content Analysis | Zack van Allen">
+<meta name="twitter:description" content="A long-form methods explainer on directed content analysis, qualitative rigour, and staged AI-assisted workflows.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0a0f'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%2300e5a0'%3Ezv%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--serif:'Source Serif 4',Georgia,serif;--mono:'DM Mono',monospace;--bg:#fefcf8;--bg2:#faf7f2;--bg3:#f0ebe3;--border:#e8d5b8;--border2:#d4c5b0;--text:#5a4a3a;--text-dark:#3a2a1a;--text-heading:#2a1a0a;--text-muted:#8a7560;--text-light:#b09a7a;--green:#5a8a6a;--green-bg:#eef4ef;--green-text:#5a7a5f;--green-dark:#4a7a54;--green-light:#6b8f71;--brown:#7a6a4a;--brown-bg:#f5f0e8;--orange:#c06a30;--orange-bg:#fdf3eb;--purple:#6a5a8a;--purple-bg:#f0edf5;--teal:#4a7a8a;--teal-bg:#ebf2f5;--red:#8a5a5a;--red-bg:#f5edeb;--gold:#c4a882}
+body{background:var(--bg);font-family:var(--serif);color:var(--text)}
+.header{padding:32px 32px 24px;border-bottom:1px solid var(--border)}
+.header-tag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:0.15em;color:var(--text-light);margin-bottom:8px}
+.header h1{font-size:28px;font-weight:700;color:var(--text-heading);line-height:1.2;font-family:var(--serif)}
+.header-sub{font-size:15px;color:var(--text-muted);margin-top:6px;font-family:var(--serif)}
+.header-authors{font-size:11px;color:var(--text-light);margin-top:10px;font-family:var(--mono);line-height:1.6}
+.tabs{display:flex;border-bottom:1px solid var(--border);background:var(--bg2);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{height:0}
+.tab-btn{padding:14px 12px;background:transparent;border:none;border-bottom:2px solid transparent;cursor:pointer;font-family:var(--mono);font-size:10px;font-weight:500;color:#a09080;letter-spacing:0.02em;transition:all 0.2s ease;white-space:nowrap}
+.tab-btn.active{background:var(--bg);border-bottom-color:var(--green);font-weight:700;color:var(--text-dark)}
+.tab-btn .icon{margin-right:5px}
+.content{padding:28px 32px 40px;max-width:720px;margin:0 auto}
+.section{display:none}
+.section.active{display:block}
+h2.st{font-size:22px;font-weight:600;font-family:var(--serif);color:var(--text-heading);margin-bottom:12px;line-height:1.3}
+p.body{font-size:14px;color:var(--text);line-height:1.6;font-family:var(--serif);margin-bottom:8px}
+.qqb{display:flex;align-items:stretch;margin:20px 0;border-radius:10px;overflow:hidden;border:1px solid var(--border2)}
+.qqb-left{flex:1;padding:14px 18px;background:var(--bg3);border-right:1px solid var(--border2)}
+.qqb-right{flex:1;padding:14px 18px;background:var(--bg2)}
+.qqb-label{font-size:10px;font-weight:700;letter-spacing:0.1em;margin-bottom:4px;font-family:var(--mono)}
+.qqb-text{font-size:14px;line-height:1.45;font-family:var(--serif)}
+.callout{padding:18px 20px;border-radius:10px;margin:20px 0}
+.callout-label{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.1em;margin-bottom:8px}
+.callout-body{font-size:14px;font-family:var(--serif);color:var(--text);line-height:1.55}
+.callout-big{padding:20px 24px;border-radius:10px;margin:20px 0}
+.callout-big .callout-body{font-size:15px;color:var(--text-dark);font-style:italic;line-height:1.55}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.grid-2-sm{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-2-10{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{padding:18px;background:var(--bg2);border-radius:10px;border:1px solid var(--border)}
+.card-icon{font-size:22px;margin-bottom:8px;color:var(--gold)}
+.card-title{font-size:15px;font-weight:600;color:var(--text-dark);font-family:var(--serif);margin-bottom:6px}
+.card-desc{font-size:13px;color:#6a5a4a;line-height:1.5;font-family:var(--serif)}
+.spectrum-bar{height:8px;border-radius:4px;background:linear-gradient(90deg,#d4885a 0%,var(--border) 50%,var(--green) 100%);margin-bottom:12px}
+.spectrum-ends{display:flex;justify-content:space-between}
+.spectrum-end{max-width:42%}
+.spectrum-label{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:0.05em;margin-bottom:6px}
+.spectrum-title{font-size:18px;font-weight:600;color:var(--text-dark);font-family:var(--serif);margin-bottom:4px}
+.mid-note{text-align:center;margin-top:20px;padding:12px 20px;background:var(--bg2);border:1px dashed var(--border2);border-radius:8px}
+.mid-note-text{font-size:13px;font-family:var(--serif);color:#6a5a4a;font-style:italic}
+.theory-box{padding:20px;border-radius:10px;border-left:4px solid}
+.theory-box-label{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:0.08em;margin-bottom:10px}
+.theory-box-sub{font-size:12px;margin-top:8px;font-family:var(--mono)}
+.step-row{display:flex;gap:16px;position:relative}
+.step-col{display:flex;flex-direction:column;align-items:center;width:48px;flex-shrink:0}
+.step-circle{width:44px;height:44px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:14px;font-weight:700;flex-shrink:0;z-index:1}
+.step-line{width:2px;flex:1;opacity:0.3}
+.step-content{padding:8px 0 28px}
+.step-title{font-size:16px;font-weight:600;font-family:var(--serif);margin-bottom:4px}
+.step-desc{font-size:14px;color:var(--text);line-height:1.5;font-family:var(--serif)}
+.compare-row{display:flex;align-items:center;justify-content:center}
+.compare-item{text-align:center;padding:10px 14px}
+.compare-item.faded{opacity:0.6}
+.compare-item.highlight{padding:12px 18px;background:#fff;border-radius:8px;border:2px solid var(--green);box-shadow:0 2px 8px rgba(90,138,106,0.15)}
+.compare-arrow{font-size:20px;color:var(--border2);padding:0 4px}
+.phase-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.phase-badge{width:36px;height:36px;border-radius:8px;border:2px solid;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:14px;font-weight:700;flex-shrink:0}
+.phase-label{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.1em}
+.phase-title{font-size:18px;font-weight:600;color:var(--text-dark);font-family:var(--serif)}
+.substep{margin-left:17px;padding-left:24px;position:relative;padding-bottom:20px}
+.substep:last-child{padding-bottom:8px;border-left:2px solid transparent!important}
+.substep-dot{position:absolute;left:-5px;top:6px;width:8px;height:8px;border-radius:50%;opacity:0.5}
+.substep-title{font-size:15px;font-weight:600;font-family:var(--serif);margin-bottom:4px}
+.substep-desc{font-size:13px;color:var(--text);line-height:1.55;font-family:var(--serif)}
+.pitfall{padding:14px 16px;border-radius:8px;border:1px solid var(--border);background:var(--bg)}
+.pitfall-wrong{font-size:12px;color:var(--orange);font-family:var(--mono);margin-bottom:4px;text-decoration:line-through;opacity:0.7}
+.pitfall-right{font-size:13px;color:var(--green);font-family:var(--serif);font-weight:600}
+.failure-card{margin-bottom:12px;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+.failure-top{padding:12px 16px;background:var(--orange-bg);border-bottom:1px solid var(--border)}
+.failure-title{font-size:14px;font-weight:600;color:var(--orange);font-family:var(--serif);margin-bottom:3px}
+.failure-desc{font-size:13px;color:#6a5a4a;font-family:var(--serif);line-height:1.45}
+.failure-fix{padding:10px 16px;background:var(--green-bg)}
+.failure-fix-text{font-size:13px;color:#4a6a4f;font-family:var(--serif);line-height:1.45}
+.pipeline-stage{display:flex;border:1px solid var(--border);overflow:hidden}
+.pipeline-num{width:52px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pipeline-num span{font-family:var(--mono);font-size:18px;font-weight:700}
+.pipeline-body{flex:1;padding:14px 18px;background:var(--bg)}
+.pipeline-head{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+.pipeline-title{font-size:15px;font-weight:600;font-family:var(--serif)}
+.pipeline-sub{font-size:12px;color:#9a8a7a;font-family:var(--mono)}
+.pipeline-design{font-size:13px;color:var(--text);line-height:1.5;font-family:var(--serif);margin-bottom:8px}
+.pipeline-io{display:flex;gap:16px;font-size:11px;font-family:var(--mono);color:var(--text-muted);flex-wrap:wrap}
+.pipeline-io .label{opacity:0.5}
+.pipeline-connector{display:flex;justify-content:center;height:4px}
+.pipeline-connector div{width:2px;height:4px;background:var(--border2)}
+.human-row{display:flex;align-items:center;gap:8px}
+.human-label{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:0.05em;width:48px;flex-shrink:0}
+.human-task{font-size:13px;color:var(--text);font-family:var(--serif)}
+.arch-card{padding:16px;background:var(--bg2);border-radius:10px;border:1px solid var(--border)}
+.arch-card-title{font-size:14px;font-weight:600;color:var(--text-dark);font-family:var(--serif);margin-bottom:5px}
+.arch-card-desc{font-size:13px;color:#6a5a4a;line-height:1.5;font-family:var(--serif)}
+.layer-card{margin-bottom:12px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.layer-row{display:flex}
+.layer-stripe{width:8px;flex-shrink:0}
+.layer-header{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border)}
+.layer-label{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:0.05em;width:110px;flex-shrink:0}
+.layer-desc{font-size:14px;font-weight:600;color:var(--text-dark);font-family:var(--serif)}
+.layer-body{padding:10px 16px;background:var(--bg)}
+.layer-example{font-size:12px;font-family:var(--mono);color:#6a5a4a;line-height:1.5;padding:8px 12px;background:var(--bg2);border-radius:6px;margin-bottom:8px}
+.layer-why{font-size:13px;color:var(--text);font-family:var(--serif);line-height:1.5}
+.constraint-row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.constraint-num{font-family:var(--mono);font-size:11px;font-weight:700;width:24px;flex-shrink:0}
+.constraint-name{width:90px;flex-shrink:0;font-size:12px;font-weight:600;font-family:var(--serif)}
+.constraint-bar{flex:1;position:relative;height:22px;background:var(--bg3);border-radius:4px;overflow:hidden}
+.constraint-fill{position:absolute;left:0;top:0;bottom:0;border-radius:4px;opacity:0.25}
+.constraint-text{position:relative;padding:3px 8px;font-size:10px;font-family:var(--mono);font-weight:600;line-height:16px}
+.folder-tree{margin:24px 0;padding:20px;background:#1a1a1a;border-radius:10px;font-family:var(--mono);font-size:12px}
+.folder-root{color:#8a8a8a;margin-bottom:8px}
+.folder-item{margin-left:16px;margin-bottom:6px}
+.folder-branch{color:#6a6a6a}
+.folder-name{color:#e8d5b8;font-weight:600}
+.folder-file{color:#7a8a7a;margin-left:12px}
+.folder-sub{margin-left:20px;margin-top:4px}
+.folder-sub-item{color:#7a8a7a;margin-bottom:2px}
+.folder-sub-branch{color:#4a4a4a}
+.func-row{display:flex;border:1px solid var(--border);overflow:hidden}
+.func-num{width:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.func-num span{font-family:var(--mono);font-size:12px;font-weight:700}
+.func-body{flex:1;padding:8px 12px;background:var(--bg);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.func-pill{font-size:10px;font-family:var(--mono);padding:2px 6px;border-radius:4px}
+.func-arrow{font-size:12px;color:var(--border2)}
+.folder-labels{display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:2px;margin:4px 0 24px}
+.folder-label{padding:8px 6px;background:var(--bg2);border-radius:6px;text-align:center;border:1px solid var(--border)}
+.folder-label-name{font-size:10px;font-weight:700;font-family:var(--mono);letter-spacing:0.02em}
+.folder-label-file{font-size:9px;color:var(--text-muted);font-family:var(--mono);margin-top:2px}
+.auto-card{padding:14px;border-radius:8px;border:1px solid var(--border);background:var(--bg)}
+.auto-title{font-size:13px;font-weight:600;font-family:var(--serif);margin-bottom:4px}
+.auto-desc{font-size:12px;color:#6a5a4a;line-height:1.5;font-family:var(--serif)}
+.pillar{margin-bottom:16px;display:flex;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.pillar-num{width:48px;display:flex;align-items:flex-start;justify-content:center;padding-top:16px;flex-shrink:0}
+.pillar-num span{font-family:var(--mono);font-size:16px;font-weight:700}
+.pillar-body{flex:1;padding:16px 20px;background:var(--bg)}
+.pillar-title{font-size:16px;font-weight:600;font-family:var(--serif);margin-bottom:6px}
+.pillar-text{font-size:13px;color:var(--text);line-height:1.55;font-family:var(--serif);margin-bottom:10px}
+.pillar-insight{padding:10px 14px;border-radius:8px}
+.pillar-insight-label{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:0.1em;margin-bottom:4px}
+.pillar-insight-text{font-size:13px;color:var(--text-dark);line-height:1.5;font-family:var(--serif)}
+.eval-layer{display:flex;align-items:stretch;border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-bottom:8px}
+.eval-stripe{width:8px;flex-shrink:0}
+.eval-inner{display:flex;flex:1;align-items:center}
+.eval-left{width:30%;padding:10px 14px}
+.eval-name{font-family:var(--mono);font-size:11px;font-weight:700}
+.eval-method{font-size:11px;color:var(--text-muted);font-family:var(--mono);margin-top:2px}
+.eval-right{flex:1;padding:10px 14px}
+.eval-asks{font-size:13px;color:var(--text);font-family:var(--serif);font-style:italic}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:20px}
+.stat-card{padding:16px 14px;background:var(--bg2);border-radius:10px;border:1px solid var(--border);text-align:center}
+.stat-num{font-size:24px;font-weight:700;color:var(--green);font-family:var(--mono)}
+.stat-label{font-size:13px;font-weight:600;color:var(--text-dark);font-family:var(--serif);margin-top:4px}
+.stat-sub{font-size:11px;color:var(--text-muted);font-family:var(--mono);margin-top:4px}
+@media(max-width:600px){.grid-2,.grid-2-sm,.grid-2-10{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr}.folder-labels{grid-template-columns:repeat(3,1fr)}.spectrum-ends{flex-direction:column;gap:16px}.spectrum-end{max-width:100%;text-align:left!important}.qqb{flex-direction:column}.qqb-left{border-right:none;border-bottom:1px solid var(--border2)}.func-body{font-size:9px}}
+html{scroll-behavior:smooth}
+body{padding-top:84px;min-height:100vh}
+.skip-link{position:absolute;left:1rem;top:-3rem;background:#00e5a0;color:#0a0a0f;padding:.75rem 1rem;border-radius:8px;text-decoration:none;font-family:"DM Mono",monospace;font-size:.8rem;z-index:300;transition:top .2s ease}
+.skip-link:focus{top:1rem}
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.1rem 1.6rem;background:rgba(10,10,15,.9);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
+.site-nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.site-nav-brand{font-family:"DM Mono",monospace;font-size:.95rem;font-weight:700;color:#00e5a0;text-decoration:none;letter-spacing:-.02em}
+.site-nav-brand span{color:#6e6e82}
+.site-nav-links{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.site-nav-links a{font-family:"DM Mono",monospace;font-size:.82rem;color:#d4d4de;text-decoration:none}
+.site-nav-links a:hover,.site-nav-links a:focus-visible{color:#00e5a0}
+.site-nav-cta{background:#00e5a0;color:#0a0a0f !important;padding:.5rem .9rem;border-radius:7px;font-weight:700}
+.site-nav-cta:hover,.site-nav-cta:focus-visible{color:#0a0a0f !important;opacity:.88}
+.article-shell{flex:1;padding-bottom:3rem}
+.article-actions{max-width:720px;margin:0 auto;padding:0 32px 24px;display:flex;flex-wrap:wrap;gap:.85rem}
+.article-action{display:inline-flex;align-items:center;padding:.4rem .75rem;border:1px solid #d4c5b0;border-radius:999px;font-family:"DM Mono",monospace;font-size:.8rem;color:#5a7a5f;text-decoration:none;background:#faf7f2}
+.article-action:hover,.article-action:focus-visible{border-color:#5a8a6a;color:#3a5a42}
+.page-footer{background:#0a0a0f;border-top:1px solid rgba(255,255,255,.08);padding:2rem 1.5rem}
+.page-footer-inner{max-width:1200px;margin:0 auto}
+.page-footer-links{display:flex;flex-wrap:wrap;gap:1rem 1.5rem;margin-bottom:.9rem}
+.page-footer-links a{color:#c6c6d2;text-decoration:none;font-family:"DM Mono",monospace;font-size:.82rem}
+.page-footer-links a:hover,.page-footer-links a:focus-visible{color:#00e5a0}
+.page-footer-copy{color:#8b8b9e;font-family:"DM Mono",monospace;font-size:.78rem}
+@media(max-width:720px){body{padding-top:74px}.site-nav{padding:1rem 1rem}.site-nav-inner{align-items:flex-start;flex-direction:column}.site-nav-links{gap:.85rem 1rem}.article-actions{padding:0 20px 20px}.header,.content{padding-left:20px;padding-right:20px}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#article-content">Skip to content</a>
+<nav class="site-nav" aria-label="Primary">
+  <div class="site-nav-inner">
+    <a class="site-nav-brand" href="../index.html">zva<span>/methods</span></a>
+    <div class="site-nav-links">
+      <a href="../index.html">Portfolio</a>
+      <a href="../index.html#methods">Methods</a>
+      <a href="../index.html#publications">Publications</a>
+      <a class="site-nav-cta" href="../Zack_van_Allen_CV%20-%20March%202026.pdf" download>Download CV</a>
+    </div>
+  </div>
+</nav>
+<main id="article-content" class="article-shell">
+
+<div class="header">
+  <div class="header-tag">A GUIDE FOR QUANTITATIVE RESEARCHERS</div>
+  <h1>Qualitative Data Analysis</h1>
+  <div class="header-sub">Inductive vs. deductive reasoning, directed content analysis, AI-assisted workflows, and the role of theory</div>
+  <div class="header-authors">Zack van Allen, PhD, MBA · L. Jayne Beselt, MSc · Jerry M. Maniate, MD, MEd, EMBA · Samuel Hickcox, MD · Joshua A. Rash, PhD · Douglas Archibald, PhD · Arun Radhakrishnan, MD</div>
+</div>
+
+<div class="article-actions">
+  <a class="article-action" href="../index.html#methods">Back to methods</a>
+  <a class="article-action" href="../index.html">View portfolio</a>
+</div>
+
+<div class="tabs" id="tabs"></div>
+<div class="content" id="content"></div>
+
+<script>
+var defined = {mono:"'DM Mono', monospace", serif:"'Source Serif 4', Georgia, serif"};
+var sections = [
+  {id:"spectrum",label:"The Spectrum",icon:"◈"},
+  {id:"theory",label:"Role of Theory",icon:"◉"},
+  {id:"dca",label:"Directed Content Analysis",icon:"◆"},
+  {id:"practice",label:"DCA in Practice",icon:"▣"},
+  {id:"ai_intro",label:"AI + DCA",icon:"⬡"},
+  {id:"ai_pipeline",label:"The Pipeline",icon:"⬢"},
+  {id:"prompt_anatomy",label:"Prompt Anatomy",icon:"▤"},
+  {id:"project_arch",label:"Project Architecture",icon:"▦"},
+  {id:"rigour",label:"Rigour",icon:"◇"},
+  {id:"advancing",label:"Advancing the Method",icon:"◎"}
+];
+
+function qqb(q,r){return '<div class="qqb"><div class="qqb-left"><div class="qqb-label" style="color:#8a7560">QUANT ANALOGY</div><div class="qqb-text" style="color:#5a4a3a">'+q+'</div></div><div class="qqb-right"><div class="qqb-label" style="color:#6b8f71">QUAL EQUIVALENT</div><div class="qqb-text" style="color:#3a4a3a">'+r+'</div></div></div>';}
+
+function callout(label,body,opts){
+  opts=opts||{};
+  var bg=opts.bg||'#faf7f2';var bc=opts.border||'1px solid #e8d5b8';var bl=opts.borderLeft||'';var lc=opts.labelColor||'#8a7560';var big=opts.big;
+  var cls=big?'callout-big':'callout';
+  var s='background:'+bg+';border:'+bc+';';
+  if(bl)s+='border-left:'+bl+';';
+  return '<div class="'+cls+'" style="'+s+'"><div class="callout-label" style="color:'+lc+'">'+label+'</div><div class="callout-body">'+body+'</div></div>';
+}
+
+var contentMap = {};
+
+// ===== SPECTRUM =====
+contentMap.spectrum = function(){
+  return '<h2 class="st">The Core Tension: Discovery vs. Confirmation</h2>'+
+  '<p class="body">Just like quantitative research moves between exploration and hypothesis testing, qualitative analysis operates on a spectrum between two poles:</p>'+
+  '<div style="margin:28px 0;position:relative">'+
+    '<div class="spectrum-bar"></div>'+
+    '<div class="spectrum-ends">'+
+      '<div class="spectrum-end" style="text-align:left"><div class="spectrum-label" style="color:#c06a30">← INDUCTIVE</div><div class="spectrum-title">Build theory from data</div><p class="body">Read transcripts, let patterns emerge. No predetermined categories. Like exploratory data analysis.</p></div>'+
+      '<div class="spectrum-end" style="text-align:right"><div class="spectrum-label" style="color:#4a7a54">DEDUCTIVE →</div><div class="spectrum-title">Apply theory to data</div><p class="body">Start with an existing framework. Sort data into pre-defined categories. Like running a pre-specified model.</p></div>'+
+    '</div>'+
+    '<div class="mid-note"><div class="mid-note-text">Most rigorous studies sit somewhere in the middle.</div></div>'+
+  '</div>'+
+  qqb('EDA → find interesting patterns → generate hypotheses','Inductive coding → find emergent themes → build new theory')+
+  qqb('Pre-register hypothesis → collect data → confirm or reject','Start with framework → code data into constructs → extend or refine');
+};
+
+// ===== THEORY =====
+contentMap.theory = function(){
+  return '<h2 class="st">Theory Isn\u2019t Background \u2014 It\u2019s Your Analytical Engine</h2>'+
+  '<p class="body">In quantitative work, your theoretical framework often lives in the introduction and never gets mentioned again. In qualitative work, theory actively shapes every analytical decision you make.</p>'+
+  '<div class="grid-2">'+
+    '<div class="theory-box" style="background:#f0ebe3;border-left-color:#c4a882"><div class="theory-box-label" style="color:#8a7560">WITHOUT THEORY</div><p class="body" style="margin:0">\u201CPeople said the new system was hard to use.\u201D</p><div class="theory-box-sub" style="color:#9a8a7a">→ Descriptive but not interpretive</div></div>'+
+    '<div class="theory-box" style="background:#eef4ef;border-left-color:#6b8f71"><div class="theory-box-label" style="color:#5a7a5f">WITH THEORY (e.g. CFIR)</div><p class="body" style="margin:0">Usability barriers mapped to <em>Complexity</em> (innovation characteristic) and <em>Available Resources</em> (inner setting).</p><div class="theory-box-sub" style="color:#6a8a6f">→ Actionable, comparable, cumulative</div></div>'+
+  '</div>'+
+  callout('','<strong>The commitment:</strong> Choosing a framework is like specifying your statistical model before running it. You\u2019re saying <em>\u201CI believe these constructs are the right lens for this phenomenon\u201D</em> \u2014 and that claim itself is subject to scrutiny.',{bg:'#faf7f2'});
+};
+
+// ===== DCA =====
+contentMap.dca = function(){
+  var steps=[
+    {num:"01",title:"Start with your framework",desc:"Framework constructs become your initial codebook (a priori codes). These are your pre-specified variables.",color:"#5a8a6a",bg:"#eef4ef"},
+    {num:"02",title:"Code transcripts",desc:"Read each interview and assign text segments to your a priori codes. Like scoring items on a validated instrument.",color:"#7a6a4a",bg:"#f5f0e8"},
+    {num:"03",title:"Flag what doesn\u2019t fit",desc:"When important data falls outside your framework, create new inductive codes. This is the escape valve.",color:"#c06a30",bg:"#fdf3eb"},
+    {num:"04",title:"Refine and synthesize",desc:"Review codes across transcripts. Collapse, split, or reorganize. Map relationships between constructs.",color:"#6a5a8a",bg:"#f0edf5"}
+  ];
+  var h='<h2 class="st">Directed Content Analysis: The Method</h2><p class="body">This is the specific technique that operationalizes theory-driven qualitative analysis. It is primarily deductive but with a built-in inductive component.</p><div style="margin:24px 0">';
+  steps.forEach(function(s,i){
+    h+='<div class="step-row"><div class="step-col"><div class="step-circle" style="background:'+s.bg+';border-color:'+s.color+';color:'+s.color+'">'+s.num+'</div>'+(i<steps.length-1?'<div class="step-line" style="background:'+s.color+'"></div>':'')+'</div><div class="step-content"><div class="step-title" style="color:'+s.color+'">'+s.title+'</div><div class="step-desc">'+s.desc+'</div></div></div>';
+  });
+  h+='</div>';
+  h+=callout('HOW DCA COMPARES TO OTHER APPROACHES','<div class="compare-row"><div class="compare-item faded"><div style="font-size:13px;font-weight:600;color:#c06a30;font-family:var(--mono)">Grounded Theory</div><div style="font-size:11px;color:#8a7560;margin-top:2px">Zero a priori codes</div></div><div class="compare-arrow">→</div><div class="compare-item highlight"><div style="font-size:14px;font-weight:700;color:#5a8a6a;font-family:var(--mono)">Directed Content Analysis</div><div style="font-size:11px;color:#5a4a3a;margin-top:2px">Framework codes + inductive escape</div></div><div class="compare-arrow">→</div><div class="compare-item faded"><div style="font-size:13px;font-weight:600;color:#4a7a54;font-family:var(--mono)">Rigid Deductive</div><div style="font-size:11px;color:#8a7560;margin-top:2px">Force-fit everything</div></div></div>',{labelColor:'#8a7560'});
+  return h;
+};
+
+// ===== PRACTICE =====
+contentMap.practice = function(){
+  var phases=[
+    {p:"A",title:"Preparation",color:"#7a6a4a",bg:"#f5f0e8",steps:[
+      {t:"Select and justify your framework",d:"Choose a theory that fits your research question and defend that choice in writing. Why is this lens appropriate? What does it illuminate that alternatives wouldn\u2019t?"},
+      {t:"Derive your initial codebook",d:"Translate each framework construct into an operational code definition with inclusion/exclusion criteria and an anchor example. This is your a priori codebook."},
+      {t:"Pilot the codebook",d:"Have two coders independently apply the codebook to 1\u20132 transcripts. Meet to compare, surface ambiguities, and refine definitions before touching the rest of the data."}
+    ]},
+    {p:"B",title:"Coding",color:"#5a8a6a",bg:"#eef4ef",steps:[
+      {t:"First-pass deductive coding",d:"Read each transcript line by line. Assign segments to a priori codes where the data fits clearly. Highlight segments that feel important but don\u2019t map to any existing code."},
+      {t:"Inductive coding of unassigned data",d:"Return to flagged segments. Develop new codes bottom-up. These inductively derived codes capture what your framework didn\u2019t anticipate."},
+      {t:"Double-coding and consensus",d:"A second coder independently codes a meaningful subset (often 20\u201330% of transcripts). The two coders then meet to discuss every disagreement to sharpen the codebook."}
+    ]},
+    {p:"C",title:"Synthesis",color:"#6a5a8a",bg:"#f0edf5",steps:[
+      {t:"Organize codes into categories",d:"Group related codes (both a priori and inductive) into higher-order categories. Map relationships between them."},
+      {t:"Constant comparison across transcripts",d:"Revisit earlier transcripts in light of codes developed later. This iterative return ensures consistency across your dataset."},
+      {t:"Write analytic memos",d:"Throughout the process, write short reflective notes explaining your reasoning. These memos become your audit trail."}
+    ]}
+  ];
+  var h='<h2 class="st">How DCA Is Rigorously Conducted in Practice</h2><p class="body">Directed content analysis isn\u2019t just \u201Cread transcripts and sort quotes into boxes.\u201D Done well, it is a structured, iterative, multi-coder process with built-in quality checks at every stage.</p>';
+  phases.forEach(function(ph,pi){
+    h+='<div style="margin-bottom:'+(pi<phases.length-1?'32':'0')+'px"><div class="phase-header"><div class="phase-badge" style="background:'+ph.bg+';border-color:'+ph.color+';color:'+ph.color+'">'+ph.p+'</div><div><div class="phase-label" style="color:'+ph.color+'">PHASE '+ph.p+'</div><div class="phase-title">'+ph.title+'</div></div></div>';
+    ph.steps.forEach(function(s,si){
+      h+='<div class="substep" style="border-left:2px solid '+(si<ph.steps.length-1?ph.color+'30':'transparent')+'"><div class="substep-dot" style="background:'+ph.color+'"></div><div class="substep-title" style="color:'+ph.color+'">'+s.t+'</div><div class="substep-desc">'+s.d+'</div></div>';
+    });
+    h+='</div>';
+  });
+  h+=callout('THE ITERATIVE PRINCIPLE','These phases aren\u2019t strictly sequential. Rigorous DCA is <em>iterative</em> \u2014 you return to earlier transcripts with new eyes, refine codes as your understanding deepens, and keep writing analytic memos the whole way through.');
+  h+=qqb('Protocol → data collection → analysis → interpretation (linear)','Codebook → code → refine codebook → re-code → interpret (cyclical)');
+  var pitfalls=[
+    {w:"Forcing all data into a priori codes",r:"Creating new inductive codes for data that doesn\u2019t fit"},
+    {w:"Single coder, no discussion",r:"Multiple coders with structured consensus meetings"},
+    {w:"Coding once and never revisiting",r:"Iterating as the codebook evolves"},
+    {w:"No written rationale for decisions",r:"Analytic memos at every stage"}
+  ];
+  h+='<div style="margin-top:24px"><div style="font-family:var(--mono);font-size:11px;font-weight:700;color:#c06a30;letter-spacing:0.08em;margin-bottom:14px">COMMON PITFALLS TO AVOID</div><div class="grid-2-sm">';
+  pitfalls.forEach(function(p){h+='<div class="pitfall"><div class="pitfall-wrong">'+p.w+'</div><div class="pitfall-right">✓ '+p.r+'</div></div>';});
+  h+='</div></div>';
+  return h;
+};
+
+// ===== AI INTRO =====
+contentMap.ai_intro = function(){
+  var failures=[
+    {p:"Analytic drift",d:"The model subtly reinterprets constructs, drifting away from the framework\u2019s definitions without announcing it.",f:"Domain-scoped prompts with codebook as sole reference; prohibit introducing new constructs."},
+    {p:"Explanation inflation",d:"Even when no new integration is needed, the model rewrites explanation text, introducing unsupported abstraction.",f:"Distinguish copy-through from true synthesis; rewriting is only permitted when subconstruct evidence is genuinely being collapsed."},
+    {p:"Flattened variation",d:"Cross-site differences get overgeneralized into bland consensus statements that erase meaningful disagreement.",f:"Name every site explicitly; require per-site valence assignments before synthesizing across sites."},
+    {p:"Double counting",d:"The model restates evidence already visible in quotes within the explanation field, inflating the apparent weight of findings.",f:"Narrow explanation text role: use it only to clarify mechanism, not to restate what the quotes already show."}
+  ];
+  var h='<h2 class="st">Why AI Fits Deductive Qualitative Analysis</h2><p class="body">The previous tabs described DCA as a structured, theory-driven method with explicit codes, defined steps, and auditable outputs. That structure is precisely what makes DCA a natural fit for AI assistance \u2014 and precisely what constrains the AI\u2019s role.</p>';
+  h+=callout('THE CORE INSIGHT','LLMs are most useful for <strong>bounded deductive tasks</strong> supported by explicit schemas and intensive human oversight. The gain comes not from asking a smarter model to think harder \u2014 it comes from building tasks that leave less room for the model to improvise.',{bg:'linear-gradient(135deg,#eef4ef 0%,#f5f0e8 100%)',borderLeft:'4px solid #5a8a6a',border:'none',labelColor:'#5a7a5f',big:true});
+  h+='<div class="grid-2"><div class="theory-box" style="background:#fdf3eb;border-left-color:#c06a30"><div class="theory-box-label" style="color:#c06a30">WHAT DOESN\u2019T WORK</div><p class="body">\u201CHere\u2019s a transcript. Code it against CFIR.\u201D</p><div class="theory-box-sub" style="color:#9a7a5a">→ Outputs drift, introduce unsupported interpretations, lose structural consistency</div></div><div class="theory-box" style="background:#eef4ef;border-left-color:#6b8f71"><div class="theory-box-label" style="color:#5a7a5f">WHAT WORKS</div><p class="body">A sequence of smaller, inspectable, highly structured tasks \u2014 each with explicit constraints and embedded quality checks.</p><div class="theory-box-sub" style="color:#6a8a6f">→ Outputs are auditable, correctable, and traceable back to source evidence</div></div></div>';
+  h+=callout('WHERE THE HUMAN WORK MOVES','Human oversight doesn\u2019t disappear \u2014 it <em>shifts</em>. Analysts spend less time manually collating quotes into spreadsheet rows and more time designing prompts, choosing workflow stages, validating outputs, and adjudicating disagreements. The cognitive work moves <strong>upstream</strong> into design and <strong>downstream</strong> into quality control.');
+  h+='<div style="margin-top:28px"><div style="font-family:var(--mono);font-size:11px;font-weight:700;color:#6a5a8a;letter-spacing:0.08em;margin-bottom:14px">FAILURE MODES AND HOW THEY WERE SOLVED</div>';
+  failures.forEach(function(f){h+='<div class="failure-card"><div class="failure-top"><div class="failure-title">'+f.p+'</div><div class="failure-desc">'+f.d+'</div></div><div class="failure-fix"><div class="failure-fix-text"><span style="font-weight:600;margin-right:4px">✓ Solution:</span>'+f.f+'</div></div></div>';});
+  h+='</div>';
+  h+=qqb('Pre-register analysis plan → run analysis → report deviations','Build prompt library → run staged pipeline → report workflow evolution');
+  h+=callout('PROMPT DEVELOPMENT AS METHODOLOGICAL WORK','Writing prompts forced the team to specify what counted as evidence, how far a synthesis could move beyond source language, when valence should be assigned, and what would count as a defensible output. These are not technical settings \u2014 they are <em>methodological decisions</em>. Making them explicit in prompt form turned out to be analytically productive in ways that were not anticipated.',{bg:'#f0edf5',borderLeft:'4px solid #6a5a8a',border:'none',labelColor:'#6a5a8a'});
+  return h;
+};
+
+// ===== AI PIPELINE =====
+contentMap.ai_pipeline = function(){
+  var stages=[
+    {num:"1",title:"Transcript Coding",sub:"Domain-scoped deductive coding",input:"Transcript + CFIR codebook",output:"Domain-level coded table",design:"One CFIR domain per run. Codebook as sole reference. Verbatim quotes only. Marks absent constructs explicitly.",color:"#7a6a4a",bg:"#f5f0e8"},
+    {num:"2",title:"Subconstruct Roll-up",sub:"Collapsing to parent constructs",input:"5-sheet coded workbook",output:"Rolled-up workbook",design:"Distinguishes copy-through vs. true synthesis. Removes blank/irrelevant rows. Domain-specific roll-up mappings. Prohibits unnecessary rewriting.",color:"#5a8a6a",bg:"#eef4ef"},
+    {num:"3",title:"Context Enrichment",sub:"Re-embedding quotes in transcript",input:"Workbook + transcript",output:"Context-enriched workbook",design:"Adds 2 sentences before and after each quote. Filters out interviewer speech. Supports rapid re-checking without losing structure.",color:"#4a7a8a",bg:"#ebf2f5"},
+    {num:"4",title:"Network Synthesis",sub:"Integrating participants within a site",input:"Multiple participant workbooks",output:"Network-level synthesis",design:"Fixed micro-structure: Sentence 1 = valence (one word), Sentence 2 = evidence pattern, Sentence 3 = mechanism. Explanation used only to clarify, never to restate.",color:"#6a5a8a",bg:"#f0edf5"},
+    {num:"5",title:"Cross-Network Synthesis",sub:"Two-pass procedure across all sites",input:"8 network workbooks",output:"Cross-network synthesis",design:"Pass 1: per-network valence assignment. Pass 2: cross-network synthesis grounded in Pass 1 findings. Each site in exactly one valence column. Embedded QA checks.",color:"#8a5a5a",bg:"#f5edeb"}
+  ];
+  var h='<h2 class="st">The Staged Pipeline: Architecture That Emerged</h2><p class="body">The most important thing this team built wasn\u2019t a single clever prompt \u2014 it was the workflow itself. Through months of iterative refinement, a five-stage pipeline emerged where each step is bounded, inspectable, and connected by structured Excel intermediates.</p><div style="margin:24px 0">';
+  stages.forEach(function(s,i){
+    var br=i===0?'10px 10px 0 0':i===stages.length-1?'0 0 10px 10px':'0';
+    var bt=i>0?'border-top:none;':'';
+    h+='<div style="margin-bottom:'+(i<stages.length-1?'4':'0')+'px"><div class="pipeline-stage" style="border-radius:'+br+';'+bt+'"><div class="pipeline-num" style="background:'+s.bg+';border-right:3px solid '+s.color+'"><span style="color:'+s.color+'">'+s.num+'</span></div><div class="pipeline-body"><div class="pipeline-head"><div class="pipeline-title" style="color:'+s.color+'">'+s.title+'</div><div class="pipeline-sub">'+s.sub+'</div></div><div class="pipeline-design">'+s.design+'</div><div class="pipeline-io"><span><span class="label">IN:</span> '+s.input+'</span><span><span class="label">OUT:</span> '+s.output+'</span></div></div></div>'+(i<stages.length-1?'<div class="pipeline-connector"><div></div></div>':'')+'</div>';
+  });
+  h+='</div>';
+  var humans=[{w:"HUMAN",t:"De-identification and privacy safeguards"},{w:"HUMAN",t:"Deciding which task at which stage"},{w:"HUMAN",t:"Reviewing outputs against source evidence"},{w:"HUMAN",t:"Adjudicating discrepancies"},{w:"HUMAN",t:"Interpreting meaning for knowledge users"},{w:"MODEL",t:"Executing bounded, schema-constrained tasks"}];
+  var humansHtml='<div class="grid-2-10">';
+  humans.forEach(function(hu){humansHtml+='<div class="human-row"><div class="human-label" style="color:'+(hu.w==="HUMAN"?"#5a8a6a":"#8a7560")+'">'+hu.w+'</div><div class="human-task">'+hu.t+'</div></div>';});
+  humansHtml+='</div>';
+  h+=callout('HUMAN-IN-THE-LOOP AT EVERY TRANSITION',humansHtml);
+  var principles=[{t:"Structured intermediates",d:"Excel workbooks between every stage create natural inspection points and a clear audit trail."},{t:"One domain per run",d:"Processing one CFIR domain at a time reduces context overload and improves structural consistency."},{t:"Embedded QA in prompts",d:"Quality checks are built into the prompt itself. Valence exclusivity, quote integrity, synthesis alignment."},{t:"Prompt archive as audit trail",d:"Earlier prompt versions are preserved as methodological artifacts. The evolution from v1 to final is itself part of the method."}];
+  h+='<div style="margin-top:28px"><div style="font-family:var(--mono);font-size:11px;font-weight:700;color:#6a5a8a;letter-spacing:0.08em;margin-bottom:14px">ARCHITECTURAL PRINCIPLES THAT EMERGED</div><div class="grid-2-sm">';
+  principles.forEach(function(p){h+='<div class="arch-card"><div class="arch-card-title">'+p.t+'</div><div class="arch-card-desc">'+p.d+'</div></div>';});
+  h+='</div></div>';
+  h+=qqb('Automated statistical pipeline with manual checkpoints','Staged AI pipeline with human review at every transition');
+  h+=callout('THE TAKEAWAY','The major change was not simply better wording in prompts. It was a re-design of the analytic workflow itself \u2014 decomposing one large, diffuse task into a sequence of smaller, inspectable, highly structured tasks where reproducibility comes from the architecture, not the model.',{bg:'linear-gradient(135deg,#f0edf5 0%,#f5f0e8 100%)',borderLeft:'4px solid #6a5a8a',border:'none',labelColor:'#6a5a8a',big:true});
+  return h;
+};
+
+// ===== PROMPT ANATOMY =====
+contentMap.prompt_anatomy = function(){
+  var layers=[
+    {label:"ROLE",color:"#8a5a5a",bg:"#f5edeb",desc:"Establishes the analytical identity",example:"\"You are an expert qualitative implementation science analyst using CFIR 2.0 + the CFIR Outcomes Addendum.\"",why:"Anchors the model in a specific disciplinary perspective. Without this, responses default to generic summarization."},
+    {label:"INPUTS",color:"#c06a30",bg:"#fdf3eb",desc:"Specifies exactly what the model receives",example:"\"The full transcript (with page numbers if available). The CFIR Construct Code Book.\"",why:"The codebook travels with the prompt \u2014 not as assumed background knowledge. Context is explicit, not implied."},
+    {label:"TASK",color:"#5a8a6a",bg:"#eef4ef",desc:"One bounded analytical action",example:"\"Code the transcript for ONE CFIR domain only: {CFIR_DOMAIN}.\"",why:"Scoping to a single domain per run prevents context overload and keeps outputs inspectable."},
+    {label:"RULES",color:"#4a7a8a",bg:"#ebf2f5",desc:"Non-negotiable constraints",example:"\"Do NOT paraphrase. Do NOT move evidence across domains. Do NOT introduce new constructs.\"",why:"Each rule maps to a specific failure mode discovered during development (see AI + DCA tab)."},
+    {label:"OUTPUT SCHEMA",color:"#6a5a8a",bg:"#f0edf5",desc:"Exact structure of the deliverable",example:"\"CFIR Domain | CFIR Construct | Combined Evidence Quotes | Synthesized Explanation | Facilitator Networks | Barrier Networks | ...\"",why:"Fixed column order and cell-level formatting rules make outputs machine-readable and directly reviewable."},
+    {label:"EMBEDDED QA",color:"#7a6a4a",bg:"#f5f0e8",desc:"Validation checks before finalization",example:"\"Network Valence Exclusivity Check: each network appears in EXACTLY ONE valence column. Valence\u2013Synthesis Alignment Check. Quote Integrity Check.\"",why:"Quality assurance lives inside the prompt, not as an afterthought. The model self-audits before delivering output."}
+  ];
+  var h='<h2 class="st">Anatomy of a Prompt</h2><p class="body">Reading across the prompt library, a consistent six-layer architecture emerges. Every prompt \u2014 from initial transcript coding to cross-group synthesis \u2014 follows the same structural pattern. This isn\u2019t a template for convenience; each layer addresses a specific methodological requirement.</p><div style="margin:24px 0">';
+  layers.forEach(function(l){
+    h+='<div class="layer-card"><div class="layer-row"><div class="layer-stripe" style="background:'+l.color+'"></div><div style="flex:1"><div class="layer-header" style="background:'+l.bg+'"><div class="layer-label" style="color:'+l.color+'">'+l.label+'</div><div class="layer-desc">'+l.desc+'</div></div><div class="layer-body"><div class="layer-example" style="border-left-color:'+l.color+'">'+l.example+'</div><div class="layer-why"><span style="font-weight:600;color:'+l.color+'">Why it matters: </span>'+l.why+'</div></div></div></div></div>';
+  });
+  h+='</div>';
+  var prog=[
+    {s:"01",n:"Transcript Coding",c:"Low",w:20,color:"#7a6a4a"},
+    {s:"02",n:"Subconstruct Roll-up",c:"Medium",w:45,color:"#5a8a6a"},
+    {s:"03",n:"Context Enrichment",c:"Low",w:20,color:"#4a7a8a"},
+    {s:"04",n:"Group Synthesis",c:"High",w:70,color:"#6a5a8a"},
+    {s:"05",n:"Cross-Group Synthesis",c:"Very High",w:95,color:"#8a5a5a"}
+  ];
+  var constraintHtml='<div>';
+  prog.forEach(function(p){
+    constraintHtml+='<div class="constraint-row"><div class="constraint-num" style="color:'+p.color+'">'+p.s+'</div><div class="constraint-name" style="color:'+p.color+'">'+p.n+'</div><div class="constraint-bar"><div class="constraint-fill" style="width:'+p.w+'%;background:'+p.color+'"></div><div class="constraint-text" style="color:'+p.color+'">'+p.c+'</div></div></div>';
+  });
+  constraintHtml+='</div><div style="margin-top:10px;font-size:12px;font-family:var(--serif);color:#8a7560;font-style:italic;text-align:center">Later-stage prompts are dramatically more constrained \u2014 reflecting the team\u2019s accumulated experience with failure modes.</div>';
+  h+=callout('HOW CONSTRAINTS ESCALATE ACROSS THE PIPELINE',constraintHtml);
+  h+=qqb('A validated instrument has: defined items, response format, scoring rules, and psychometric evidence','A rigorous prompt has: role, inputs, task scope, rules, output schema, and embedded QA');
+  h+=callout('THE KEY INSIGHT','The codebook is not background knowledge the model is assumed to have \u2014 it is an explicit input attached to every prompt. Context is provided, not presupposed. This is what makes the pipeline reproducible: any analyst with the same transcripts, codebook, and prompt library can re-run the entire analysis.',{bg:'linear-gradient(135deg,#f0edf5 0%,#f5f0e8 100%)',borderLeft:'4px solid #6a5a8a',border:'none',labelColor:'#6a5a8a'});
+  return h;
+};
+
+// ===== PROJECT ARCHITECTURE =====
+contentMap.project_arch = function(){
+  var h='<h2 class="st">Project Architecture: From Method to System</h2><p class="body">Each prompt in the pipeline is a function: it takes defined inputs and produces defined outputs. The outputs of stage N become the inputs of stage N+1. That\u2019s what makes the entire workflow automatable.</p>';
+  h+='<div class="folder-tree"><div class="folder-root">amn-cfir-pipeline/</div>';
+  var items=[
+    {name:"transcripts/",file:"participant_7A.docx",last:false},
+    {name:"codebook/",file:"cfir_v2_codebook.xlsx",last:false},
+    {name:"prompts/",file:"01_code_to_domain.md",last:false},
+    {name:"outputs/",file:null,last:false,subs:["01_coded/","02_rolled_up/","03_contextualized/","04_group_synthesis/","05_cross_group/"]},
+    {name:"automation/",file:"run_pipeline.py",last:true}
+  ];
+  items.forEach(function(it){
+    var br=it.last?'└──':'├──';
+    h+='<div class="folder-item"><span class="folder-branch">'+br+'</span> <span class="folder-name">'+it.name+'</span>';
+    if(it.file){h+='<span class="folder-file">← '+it.file+'</span>';}
+    if(it.subs){
+      h+='<div class="folder-sub">';
+      it.subs.forEach(function(s,si){
+        var sbr=si<it.subs.length-1?'├──':'└──';
+        h+='<div class="folder-sub-item"><span class="folder-sub-branch">'+sbr+'</span> '+s+'</div>';
+      });
+      h+='</div>';
+    }
+    h+='</div>';
+  });
+  h+='</div>';
+  var fnames=["transcripts","codebook","prompts","outputs","automation"];
+  var ffiles=["participant_7A.docx","cfir_v2_codebook.xlsx","01_code_to_domain.md","staged workbooks","run_pipeline.py"];
+  var fcolors=["#7a6a4a","#5a8a6a","#6a5a8a","#4a7a8a","#8a5a5a"];
+  h+='<div class="folder-labels">';
+  fnames.forEach(function(n,i){h+='<div class="folder-label"><div class="folder-label-name" style="color:'+fcolors[i]+'">'+n+'</div><div class="folder-label-file">'+ffiles[i].split(".")[0]+'</div></div>';});
+  h+='</div>';
+  h+='<div style="font-family:var(--mono);font-size:10px;font-weight:700;color:#8a7560;letter-spacing:0.1em;margin-bottom:12px">PROMPTS AS FUNCTIONS</div><div style="margin:0 0 24px">';
+  var funcs=[
+    {s:"01",i:"transcript.docx + codebook.xlsx",p:"01_code_to_domain.md",o:"coded_domain.xlsx"},
+    {s:"02",i:"coded_domain.xlsx",p:"02_subconstruct_rollup.md",o:"rolled_up.xlsx"},
+    {s:"03",i:"rolled_up.xlsx + transcript.docx",p:"03_add_context.md",o:"contextualized.xlsx"},
+    {s:"04",i:"multiple participant.xlsx",p:"04_group_level_synthesis.md",o:"group_synthesis.xlsx"},
+    {s:"05",i:"8 group workbooks",p:"05_final_synthesis.md",o:"cross_group_synthesis.xlsx"}
+  ];
+  var fColors=["#7a6a4a","#5a8a6a","#4a7a8a","#6a5a8a","#8a5a5a"];
+  var fBgs=["#f5f0e8","#eef4ef","#ebf2f5","#f0edf5","#f5edeb"];
+  funcs.forEach(function(fc,i){
+    var br=i===0?'8px 8px 0 0':i===funcs.length-1?'0 0 8px 8px':'0';
+    var bt=i>0?'border-top:none;':'';
+    h+='<div style="margin-bottom:'+(i<funcs.length-1?'4':'0')+'px"><div class="func-row" style="border-radius:'+br+';'+bt+'"><div class="func-num" style="background:'+fBgs[i]+';border-right:2px solid '+fColors[i]+'"><span style="color:'+fColors[i]+'">'+fc.s+'</span></div><div class="func-body"><span class="func-pill" style="color:#8a7560;background:#f0ebe3">'+fc.i+'</span><span class="func-arrow">→</span><span class="func-pill" style="color:'+fColors[i]+';font-weight:600;background:'+fBgs[i]+'">'+fc.p+'</span><span class="func-arrow">→</span><span class="func-pill" style="color:#5a8a6a;background:#eef4ef">'+fc.o+'</span></div></div></div>';
+  });
+  h+='</div>';
+  var autos=[{t:"Interchangeable models",d:"Swap Claude for GPT or Gemini with one config change. The prompt library stays the same.",c:"#8a5a5a"},{t:"Batch processing",d:"Run all transcripts through Stage 01 overnight. Process all five CFIR domains in parallel.",c:"#5a8a6a"},{t:"QA surfacing",d:"Python scripts parse model outputs and flag QA failures automatically. Human reviewers see only the issues that need attention.",c:"#c06a30"},{t:"Version control",d:"Prompts, outputs, and adjudication decisions are all tracked in git. Every analytical decision has a timestamp and a diff.",c:"#6a5a8a"}];
+  var autoHtml='<div class="grid-2-sm">';
+  autos.forEach(function(a){autoHtml+='<div class="auto-card"><div class="auto-title" style="color:'+a.c+'">'+a.t+'</div><div class="auto-desc">'+a.d+'</div></div>';});
+  autoHtml+='</div>';
+  h+=callout('WHAT AUTOMATION ENABLES',autoHtml);
+  h+=qqb('Statistical analysis scripts: defined inputs, transformation logic, outputs, reproducible with one command','Prompt pipeline: defined inputs, structured prompts, staged outputs, reproducible with one script');
+  h+=callout('THE BRIDGE TO AUTOMATION','Python doesn\u2019t do the analysis \u2014 it orchestrates the sequence, manages file I/O between stages, and surfaces QA failures for human review. The models are interchangeable modules within the architecture. The prompts are the method. The scripts are the plumbing.',{bg:'linear-gradient(135deg,#eef4ef 0%,#f5f0e8 100%)',borderLeft:'4px solid #5a8a6a',border:'none',labelColor:'#5a7a5f'});
+  return h;
+};
+
+// ===== RIGOUR =====
+contentMap.rigour = function(){
+  var cards=[
+    {icon:"⬡",t:"Audit Trail",d:"Can you trace from a final theme back to the raw quote that generated it? Document every analytical decision."},
+    {icon:"⬢",t:"Theoretical Justification",d:"Why this framework and not another? The choice must be defended, not assumed."},
+    {icon:"◈",t:"Negative Cases",d:"How did you handle data that didn\u2019t fit? Ignoring it is a red flag. Creating new codes is a strength."},
+    {icon:"◇",t:"Reflexivity",d:"How might the researchers\u2019 own position have shaped what they noticed or overlooked?"}
+  ];
+  var h='<h2 class="st">What Rigour Looks Like in Qualitative Work</h2><p class="body">A common instinct from quantitative training is to ask about inter-rater reliability. That is reasonable, but qualitative rigour is about <strong>transparency of interpretation</strong>, not agreement metrics.</p><div class="grid-2">';
+  cards.forEach(function(c){h+='<div class="card"><div class="card-icon">'+c.icon+'</div><div class="card-title">'+c.t+'</div><div class="card-desc">'+c.d+'</div></div>';});
+  h+='</div>';
+  h+=qqb('Inter-rater reliability (κ), standardized protocols','Audit trail, reflexivity, negative case analysis, thick description');
+  h+=callout('THE ONE-SENTENCE VERSION','Directed content analysis lets you use an established theory to structure your interview analysis while still allowing unexpected findings to surface \u2014 it\u2019s the qualitative equivalent of having a pre-specified model but reporting unanticipated secondary findings.',{bg:'linear-gradient(135deg,#eef4ef 0%,#f5f0e8 100%)',borderLeft:'4px solid #5a8a6a',border:'none',labelColor:'#5a7a5f',big:true});
+  return h;
+};
+
+// ===== ADVANCING =====
+contentMap.advancing = function(){
+  var pillars=[
+    {n:"1",t:"Model Variability Is a Research Question",c:"#8a5a5a",bg:"#f5edeb",body:"When the same transcripts and prompt pipeline are run through different LLMs, the outputs are not identical. Construct coverage, valence assignment, synthesis quality, and error detection all vary \u2014 and relative performance can shift depending on whether you\u2019re looking at transcript-level coding, group-level synthesis, or cross-group meta-synthesis.",ins:"Divergent outputs between models can surface ambiguous passages and construct-boundary disagreements that a single human coder might resolve silently \u2014 creating an opportunity for more transparent analytical decision-making.",il:"THE ASSET"},
+    {n:"2",t:"Multi-Method Evaluation Architecture",c:"#5a8a6a",bg:"#eef4ef",body:"Existing evaluations of LLM-assisted coding tend to rely on a single metric \u2014 usually inter-rater agreement (\u03BA) between model and human. That\u2019s necessary but insufficient. A model can achieve high agreement while still producing outputs that are unfaithful to source evidence, redundant, or practically unusable for downstream implementation work.",ins:"What\u2019s needed is a layered approach: quantitative concordance metrics for baseline reliability, rubric-based evaluation across dimensions like framework fidelity and traceability, seeded-error detection for robustness, and stratified human adjudication for ground truth.",il:"THE STANDARD"},
+    {n:"3",t:"Consistency at Scale",c:"#4a7a8a",bg:"#ebf2f5",body:"Here\u2019s an uncomfortable truth: human coders drift. Across a large corpus \u2014 dozens of transcripts, multiple sites, months of coding \u2014 even well-trained analysts subtly shift how they interpret construct boundaries, what counts as sufficient evidence, and how they assign valence.",ins:"LLMs applied through a standardized prompt pipeline don\u2019t drift in the same way. The same prompt, applied to the same input, produces structurally consistent output. This doesn\u2019t make the output correct \u2014 it makes it consistently auditable.",il:"THE ADVANTAGE"},
+    {n:"4",t:"Cost and Speed Change the Calculus",c:"#7a6a4a",bg:"#f5f0e8",body:"Processing a full transcript through a five-stage CFIR pipeline costs roughly $1.25 with a frontier model like Claude Opus 4.6. It takes minutes, not weeks. This changes the practical calculus for research teams in ways that go beyond efficiency.",ins:"You can afford to run the same data through multiple models and compare outputs. You can iterate on your codebook more aggressively because re-processing is cheap. You can build evaluation infrastructure \u2014 rubric judges, seeded-error validators, pairwise comparison tools \u2014 that would be prohibitively expensive if every evaluation required additional human coding hours.",il:"WHAT IT ENABLES"},
+    {n:"5",t:"Human-Led Coding for Training",c:"#6a5a8a",bg:"#f0edf5",body:"The cognitive work of reading a transcript, wrestling with construct boundaries, writing analytic memos, and defending coding decisions in a consensus meeting is foundational to becoming a competent qualitative researcher. None of this should be skipped.",ins:"What changes is the role of that experience. The trainee\u2019s hand-coding becomes a calibration exercise and a source of ground truth \u2014 not the production bottleneck. Trainees code a meaningful subset, their coding is compared against model outputs, and the disagreements become the richest learning moments.",il:"THE BETTER MODEL"}
+  ];
+  var h='<h2 class="st">A Call to Action: Advancing the Method</h2><p class="body">DCA has been the workhorse of theory-driven qualitative research for decades, but its practical ceiling has always been the same: it is slow, expensive, and cognitively demanding. LLM-assisted pipelines don\u2019t just speed up existing practice \u2014 they open a genuinely new design space for how DCA can be conducted, evaluated, and taught.</p><div style="margin:24px 0">';
+  pillars.forEach(function(p){
+    h+='<div class="pillar"><div class="pillar-num" style="background:'+p.bg+';border-right:3px solid '+p.c+'"><span style="color:'+p.c+'">'+p.n+'</span></div><div class="pillar-body"><div class="pillar-title" style="color:'+p.c+'">'+p.t+'</div><div class="pillar-text">'+p.body+'</div><div class="pillar-insight" style="background:'+p.bg+';border-left:3px solid '+p.c+'"><div class="pillar-insight-label" style="color:'+p.c+'">'+p.il+'</div><div class="pillar-insight-text">'+p.ins+'</div></div></div></div>';
+  });
+  h+='</div>';
+  var evals=[
+    {layer:"Concordance",method:"Jaccard similarity, Cohen\u2019s \u03BA",asks:"Do the models agree with each other?",c:"#8a5a5a",bg:"#f5edeb"},
+    {layer:"Rubric evaluation",method:"9-dimension scoring (1\u20135)",asks:"Are the outputs faithful, traceable, and useful?",c:"#5a8a6a",bg:"#eef4ef"},
+    {layer:"Seeded-error detection",method:"Planted error audit",asks:"Can the model catch known mistakes?",c:"#c06a30",bg:"#fdf3eb"},
+    {layer:"Human adjudication",method:"Accept / Edit / Reject",asks:"Does expert judgment confirm quality?",c:"#6a5a8a",bg:"#f0edf5"}
+  ];
+  var evalHtml='<div>';
+  evals.forEach(function(e){
+    evalHtml+='<div class="eval-layer"><div class="eval-stripe" style="background:'+e.c+'"></div><div class="eval-inner"><div class="eval-left" style="background:'+e.bg+'"><div class="eval-name" style="color:'+e.c+'">'+e.layer+'</div><div class="eval-method">'+e.method+'</div></div><div class="eval-right"><div class="eval-asks">'+e.asks+'</div></div></div></div>';
+  });
+  evalHtml+='</div>';
+  h+=callout('THE MULTI-METHOD EVALUATION ARCHITECTURE',evalHtml,{labelColor:'#8a7560'});
+  h+=qqb('Sensitivity, specificity, ROC \u2014 multiple metrics for different facets of performance','Concordance, rubric scoring, error detection, human adjudication \u2014 same logic, applied to qualitative outputs');
+  h+=callout('THE OPPORTUNITY','DCA is uniquely positioned among qualitative methods to benefit from AI assistance because it is already structured, already deductive, and already committed to transparency. The pieces are now available: staged pipelines with embedded quality assurance, open-source prompt libraries, multi-method evaluation architectures, and models capable of producing construct-level coding at trivial cost. What the field needs now is a community of practice willing to test, critique, extend, and hold these methods to the same standards we apply to any other analytical tool.',{bg:'linear-gradient(135deg,#eef4ef 0%,#f0edf5 50%,#f5f0e8 100%)',borderLeft:'4px solid #5a8a6a',border:'none',labelColor:'#5a7a5f',big:true});
+  h+='<div class="stats-grid"><div class="stat-card"><div class="stat-num">~$1.25</div><div class="stat-label">per transcript</div><div class="stat-sub">Full CFIR pipeline, frontier model</div></div><div class="stat-card"><div class="stat-num">Minutes</div><div class="stat-label">not weeks</div><div class="stat-sub">From transcript to coded output</div></div><div class="stat-card"><div class="stat-num">∞</div><div class="stat-label">re-runs at marginal cost</div><div class="stat-sub">Compare models, iterate codebooks</div></div></div>';
+  return h;
+};
+
+// ===== INIT =====
+var activeTab = 'spectrum';
+var tabsEl = document.getElementById('tabs');
+var contentEl = document.getElementById('content');
+
+sections.forEach(function(s){
+  var btn = document.createElement('button');
+  btn.className = 'tab-btn' + (s.id === activeTab ? ' active' : '');
+  btn.setAttribute('data-id', s.id);
+  btn.innerHTML = '<span class="icon">' + s.icon + '</span>' + s.label;
+  btn.addEventListener('click', function(){
+    activeTab = s.id;
+    render();
+  });
+  tabsEl.appendChild(btn);
+});
+
+function render(){
+  document.querySelectorAll('.tab-btn').forEach(function(b){
+    b.className = 'tab-btn' + (b.getAttribute('data-id') === activeTab ? ' active' : '');
+  });
+  if(contentMap[activeTab]){
+    contentEl.innerHTML = contentMap[activeTab]();
+  }
+}
+render();
+</script>
+</main>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <div class="page-footer-links">
+      <a href="../index.html">Portfolio</a>
+      <a href="../index.html#methods">Methods</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../Zack_van_Allen_CV%20-%20March%202026.pdf" download>Download CV</a>
+      <a href="mailto:vanallen.22@gmail.com">vanallen.22@gmail.com</a>
+      <a href="https://github.com/ZvanAllen" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://scholar.google.ca/citations?user=ukUBURoAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+      <a href="https://www.linkedin.com/in/zack-van-allen-phd-mba-1a4377a2/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://x.com/Zack_van_Allen" target="_blank" rel="noopener noreferrer">X</a>
+    </div>
+    <div class="page-footer-copy">&copy; 2026 Zack van Allen. Ontario, Canada.</div>
+  </div>
+</footer>
+</body>
+</html>
