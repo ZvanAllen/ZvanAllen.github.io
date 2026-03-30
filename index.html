@@ -347,8 +347,9 @@
   .hero-link svg { width: 16px; height: 16px; }
 
   .hero-stats {
-    display: flex;
-    gap: 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.75rem;
     margin-top: 4rem;
     padding-top: 2.5rem;
     border-top: 1px solid var(--border);
@@ -356,11 +357,25 @@
     animation: fadeUp 0.6s ease forwards 0.8s;
   }
 
+  .stat-item {
+    min-width: 0;
+  }
+
   .stat-number {
     font-family: var(--font-mono);
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--accent);
+    line-height: 1.1;
+  }
+  .stat-number.stat-number-wide {
+    font-size: 1.15rem;
+  }
+  .stat-prefix {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    margin-right: 0.35rem;
+    color: var(--text-secondary);
   }
   .stat-label {
     font-size: 0.8rem;
@@ -863,7 +878,7 @@
     .hero { padding: 7rem 1.25rem 3rem; min-height: auto; }
     .hero-layout { grid-template-columns: 1fr; }
     .hero h1 { font-size: 2.2rem; }
-    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 1rem; }
     main section { padding: 4rem 1.25rem; }
     .projects-grid { grid-template-columns: 1fr; }
     .cards-grid { grid-template-columns: 1fr; }
@@ -929,7 +944,6 @@
       My work spans peer-reviewed research, health-system grants, healthcare AI governance, and working prototypes for triage, admissions, and scholarly feedback. I focus on building tools that are credible to researchers, practical for clinicians, and deployable inside real-world constraints.
     </p>
     <div class="hero-credentials">
-      <span class="hero-credential">20+ peer-reviewed publications</span>
       <span class="hero-credential">CIHR Doctoral Award</span>
       <span class="hero-credential">Mitacs-Banting Fellow</span>
       <span class="hero-credential">AI Implementation Researcher</span>
@@ -961,17 +975,21 @@
       </a>
     </div>
     <div class="hero-stats">
-      <div>
+      <div class="stat-item">
         <div class="stat-number">10+</div>
         <div class="stat-label">Years in Research</div>
       </div>
-      <div>
-        <div class="stat-number">20+</div>
-        <div class="stat-label">Publications</div>
+      <div class="stat-item">
+        <div class="stat-number">26</div>
+        <div class="stat-label">Peer-Reviewed Publications</div>
       </div>
-      <div>
-        <div class="stat-number">6+</div>
+      <div class="stat-item">
+        <div class="stat-number">7</div>
         <div class="stat-label">Funded Initiatives</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number stat-number-wide"><span class="stat-prefix">CAD $</span>2,085,870</div>
+        <div class="stat-label">Research Funding</div>
       </div>
     </div>
     </div>
