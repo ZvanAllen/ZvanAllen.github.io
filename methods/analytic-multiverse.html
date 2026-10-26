@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Analytic Multiverse of AI-Assisted Qualitative Coding | Zack van Allen</title>
+<meta name="description" content="Every AI coding result is one path through many defensible choices. A screening study of 32 configurations shows which choices mattered for AI-assisted directed content analysis, how they interacted, and what to report.">
+<meta name="author" content="Zack van Allen">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#fbf8f3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15120e" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://zackvanallen.com/methods/analytic-multiverse.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The analytic multiverse of AI-assisted qualitative coding">
+<meta property="og:description" content="Every AI coding result is one path through many defensible choices. A screening study of 32 configurations shows which choices mattered, how they interacted, and what to report.">
+<meta property="og:url" content="https://zackvanallen.com/methods/analytic-multiverse.html">
+<meta property="og:site_name" content="zackvanallen.com">
+<meta property="og:image" content="https://zackvanallen.com/methods/analytic-multiverse/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The analytic multiverse of AI-assisted qualitative coding: a fork map of coding and scoring choices with one highlighted path">
+<meta property="article:published_time" content="2026-10-26">
+<meta property="article:author" content="Zack van Allen">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The analytic multiverse of AI-assisted qualitative coding">
+<meta name="twitter:description" content="A screening study of 32 configurations: which choices mattered for AI-assisted coding, how they interacted, and what to report.">
+<meta name="twitter:image" content="https://zackvanallen.com/methods/analytic-multiverse/social-card.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232f6b4f'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-size='30' font-weight='700' fill='%23fbf8f3'%3Ezv%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('zva-theme');
+      if (saved === 'light' || saved === 'dark') document.documentElement.setAttribute('data-theme', saved);
+    } catch (e) {}
+  })();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The analytic multiverse of AI-assisted qualitative coding",
+  "description": "A write-up of the preprint 'The analytic multiverse of AI-assisted directed content analysis: a framework, open tools, and a screening study'.",
+  "datePublished": "2026-10-26",
+  "author": { "@type": "Person", "name": "Zack van Allen", "url": "https://zackvanallen.com/", "sameAs": ["https://orcid.org/0000-0002-5778-6441"] },
+  "image": "https://zackvanallen.com/methods/analytic-multiverse/social-card.png",
+  "mainEntityOfPage": "https://zackvanallen.com/methods/analytic-multiverse.html"
+}
+</script>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #fbf8f3;
+    --bg-alt: #f4eee5;
+    --surface: #fffdf9;
+    --ink: #221910;
+    --text: #43372b;
+    --muted: #6a5b4b;
+    --line: #e5dacb;
+    --line-strong: #d2c3ad;
+    --accent: #2f6b4f;
+    --accent-ink: #245a41;
+    --accent-soft: #e5eee7;
+    --on-accent: #fbf8f3;
+    --clay: #9c4d24;
+    --clay-soft: #f5e8dd;
+    --figure-bg: #ffffff;
+    --shadow: 0 1px 2px rgba(60, 40, 20, 0.05), 0 8px 24px rgba(60, 40, 20, 0.06);
+    --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --mono: 'DM Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    --measure: 44rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #15120e; --bg-alt: #1b1712; --surface: #201b15; --ink: #f4ede2; --text: #dbd0c1; --muted: #ab9c8b;
+      --line: #342c23; --line-strong: #4a4034; --accent: #8fc3a5; --accent-ink: #a8d3ba; --accent-soft: rgba(143, 195, 165, 0.12);
+      --on-accent: #15120e; --clay: #e3a07a; --clay-soft: rgba(227, 160, 122, 0.12); --figure-bg: #fbf8f3;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #15120e; --bg-alt: #1b1712; --surface: #201b15; --ink: #f4ede2; --text: #dbd0c1; --muted: #ab9c8b;
+    --line: #342c23; --line-strong: #4a4034; --accent: #8fc3a5; --accent-ink: #a8d3ba; --accent-soft: rgba(143, 195, 165, 0.12);
+    --on-accent: #15120e; --clay: #e3a07a; --clay-soft: rgba(227, 160, 122, 0.12); --figure-bg: #fbf8f3;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 1.0625rem; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: var(--accent-ink); text-underline-offset: 0.18em; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  .skip-link { position: absolute; left: 1rem; top: -3rem; z-index: 300; background: var(--accent); color: var(--on-accent); padding: 0.6rem 1rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+  .skip-link:focus { top: 1rem; }
+
+  /* Navigation and footer, matching the methods guide */
+  .site-nav { position: sticky; top: 0; z-index: 200; padding: 1rem 1.5rem; background: color-mix(in srgb, var(--bg) 90%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .site-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .site-nav-brand { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+  .site-nav-brand span { color: var(--accent); }
+  .site-nav-links { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .site-nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--muted); text-decoration: none; }
+  .site-nav-links a:hover, .site-nav-links a:focus-visible { color: var(--ink); }
+  .site-nav-links a.site-nav-cta { background: var(--accent); color: var(--on-accent); padding: 0.5rem 0.95rem; border-radius: 10px; font-weight: 600; }
+  .site-nav-links a.site-nav-cta:hover { background: var(--accent-ink); color: var(--on-accent); }
+
+  .page-footer { background: var(--bg-alt); border-top: 1px solid var(--line); padding: 2rem 1.5rem; margin-top: 4rem; }
+  .page-footer-inner { max-width: 1200px; margin: 0 auto; }
+  .page-footer-links { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; margin-bottom: 0.9rem; }
+  .page-footer-links a { color: var(--text); text-decoration: none; font-size: 0.95rem; }
+  .page-footer-links a:hover, .page-footer-links a:focus-visible { color: var(--accent); text-decoration: underline; }
+  .page-footer-copy { color: var(--muted); font-size: 0.9rem; }
+
+  /* Article */
+  .article { max-width: var(--measure); margin: 0 auto; padding: 3.25rem 1.5rem 0; }
+  .eyebrow { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.9rem; }
+  .article h1 { font-family: var(--serif); font-size: clamp(2rem, 4.6vw, 2.85rem); line-height: 1.12; font-weight: 700; letter-spacing: -0.015em; color: var(--ink); margin-bottom: 1rem; }
+  .dek { font-family: var(--serif); font-size: 1.25rem; line-height: 1.5; color: var(--text); margin-bottom: 1.1rem; }
+  .byline { font-size: 0.95rem; color: var(--muted); margin-bottom: 1.5rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-bottom: 0.8rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.55rem 1rem; border-radius: 10px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: 1px solid var(--line-strong); color: var(--ink); background: var(--surface); }
+  .btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+  .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+  .btn-primary:hover { background: var(--accent-ink); color: var(--on-accent); }
+  .note { font-size: 0.9rem; color: var(--muted); margin-bottom: 2.25rem; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; margin: 0 0 2.75rem; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 0.9rem 1rem; box-shadow: var(--shadow); }
+  .stat-num { font-family: var(--serif); font-weight: 700; font-size: 1.45rem; color: var(--ink); line-height: 1.2; }
+  .stat-label { font-size: 0.86rem; line-height: 1.4; color: var(--muted); margin-top: 0.3rem; }
+
+  .article h2 { font-family: var(--serif); font-size: 1.65rem; line-height: 1.25; font-weight: 700; color: var(--ink); margin: 2.75rem 0 0.9rem; letter-spacing: -0.01em; }
+  .article h3 { font-family: var(--serif); font-size: 1.25rem; line-height: 1.3; font-weight: 600; color: var(--ink); margin: 2rem 0 0.6rem; }
+  .finding-num { font-family: var(--mono); font-size: 0.8rem; font-weight: 500; color: var(--clay); letter-spacing: 0.08em; display: block; margin-bottom: 0.2rem; }
+  .article p { margin-bottom: 1rem; }
+  .article ol, .article ul { margin: 0 0 1.1rem 1.35rem; }
+  .article li { margin-bottom: 0.55rem; padding-left: 0.2rem; }
+  .q { font-style: normal; }
+
+  figure { margin: 1.5rem 0 1.75rem; }
+  .figure-card { background: var(--figure-bg); border: 1px solid var(--line); border-radius: 12px; padding: 0.9rem; box-shadow: var(--shadow); }
+  .figure-card a { display: block; }
+  figcaption { font-size: 0.9rem; line-height: 1.55; color: var(--muted); margin-top: 0.7rem; }
+  figcaption b { color: var(--text); font-weight: 600; }
+  .wide { margin-left: -4rem; margin-right: -4rem; }
+
+  .pull { font-family: var(--serif); font-size: 1.3rem; line-height: 1.45; color: var(--ink); border-left: 3px solid var(--accent); padding: 0.2rem 0 0.2rem 1.2rem; margin: 2rem 0; }
+  .panel { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 1.2rem 1.35rem 0.4rem; margin: 1.25rem 0 1.5rem; }
+  .panel-label { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 0.6rem; }
+  .cite { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.25rem; font-size: 0.95rem; }
+  .cite p { margin-bottom: 0.6rem; }
+  .cite p:last-child { margin-bottom: 0; }
+
+  @media (max-width: 1000px) { .wide { margin-left: 0; margin-right: 0; } }
+  @media (max-width: 720px) {
+    .site-nav { padding: 0.85rem 1rem; }
+    .site-nav-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .site-nav-links { gap: 0.6rem 1rem; }
+    .article { padding: 2rem 1.1rem 0; }
+    .dek { font-size: 1.12rem; }
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .figure-card { padding: 0.5rem; }
+  }
+  @media print {
+    .site-nav, .page-footer, .actions, .skip-link { display: none; }
+    body { background: #fff; color: #000; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#article">Skip to content</a>
+<nav class="site-nav" aria-label="Primary">
+  <div class="site-nav-inner">
+    <a class="site-nav-brand" href="../index.html">Zack van Allen<span>.</span></a>
+    <div class="site-nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../index.html#research">Research</a>
+      <a href="../index.html#publications">Publications</a>
+      <a class="site-nav-cta" href="../Zack_van_Allen_CV.pdf" download>Download CV</a>
+    </div>
+  </div>
+</nav>
+
+<main id="article" class="article">
+  <p class="eyebrow">Preprint write-up &middot; October 2026</p>
+  <h1>The analytic multiverse of AI-assisted qualitative coding</h1>
+  <p class="dek">Every AI coding result is one path through many defensible choices. A screening study of 32 configurations shows which choices mattered, how they interacted, and why one configuration answers a narrower question than it appears to.</p>
+  <p class="byline">Zack van Allen &middot; 26 October 2026 &middot; About 7 minutes</p>
+
+  <div class="actions">
+    <a class="btn btn-primary" href="https://doi.org/10.17605/OSF.IO/9287H" target="_blank" rel="noopener noreferrer">Preprint and materials (OSF)</a>
+    <a class="btn" href="https://github.com/ZvanAllen/qualframe" target="_blank" rel="noopener noreferrer">QualFrame on GitHub</a>
+    <a class="btn" href="ai-directed-content-analysis.html">Methods guide</a>
+  </div>
+  <p class="note">The preprint is in moderation at PsyArXiv; a direct link will be added here once it is posted.</p>
+
+  <div class="stats" role="list">
+    <div class="stat" role="listitem"><div class="stat-num">32</div><div class="stat-label">configurations screened across two models and five choices</div></div>
+    <div class="stat" role="listitem"><div class="stat-num">0.24&ndash;0.57</div><div class="stat-label">range of agreement with human coding (MCC)</div></div>
+    <div class="stat" role="listitem"><div class="stat-num">43&ndash;64%</div><div class="stat-label">of applied codes not repeated by all four identical runs</div></div>
+    <div class="stat" role="listitem"><div class="stat-num">US$13.66</div><div class="stat-label">recorded API spend for the whole screen</div></div>
+  </div>
+
+  <h2 id="why">Why this matters</h2>
+  <p>Large language models (LLMs) can now apply a qualitative codebook to interviews and documents far faster than a human team, and a growing literature reports how well they do so. However, most of these studies report one configuration (i.e., one set of choices used to produce and score the codes) and its agreement with human coding. A configuration is a stack of decisions: how documents are divided, how the codebook is presented, how the task is worded, which model and settings are used, and how agreement is counted. Few of these decisions have a single correct answer, and most are made once and left untested.</p>
+  <p>Psychology met a similar problem in the &lsquo;garden of forking paths&rsquo;, where flexible analytic choices can produce almost any result. Its answer was multiverse analysis: run every defensible analysis and report the spread. In the preprint, I adapt that idea to AI-assisted directed content analysis, the deductive form of qualitative coding in which codes are defined in advance from a framework or theory.</p>
+
+  <figure class="wide">
+    <div class="figure-card"><a href="analytic-multiverse/fig1-fork-map.png"><img src="analytic-multiverse/fig1-fork-map.png" width="1600" height="1094" alt="A grid of nine forks in two layers. Producing the codes: text unit, codebook presentation, instructions, model, reasoning effort and aggregation. Scoring the codes: reference, agreement unit and statistic. Each fork has three options, and a highlighted line traces one path through them."></a></div>
+    <figcaption><b>Every AI coding result is one path through many choices.</b> Nine forks in two layers, producing codes and scoring them, each with three example options; the highlighted boxes trace one possible path. Three options at each of nine forks give 19,683 paths.</figcaption>
+  </figure>
+
+  <h2 id="study">The study</h2>
+  <p>To see which choices matter, I ran a screening study on a public dataset. The Human Behaviour-Change Project released smoking-cessation trial reports annotated with 94 behaviour change techniques. Two low-cost models, Claude Haiku 5.5 and GPT-6 Luna, coded 40 of those reports under a half-fraction factorial design that varied five choices at once: the task instructions (&lsquo;find passages&rsquo; or &lsquo;decide every code&rsquo;), whether the codebook was sent whole or in five parts, reasoning effort, a paraphrase of the instructions, and the order of the codes. One configuration per model was run four times to measure chance variation. Agreement with the human annotations was measured with the Matthews correlation coefficient (MCC), where 0 means chance agreement and 1 perfect agreement. The whole screen, 38 runs and 4,080 requests, cost US$13.66 in recorded API spend.</p>
+  <p>The runs used two open-source tools I built for this work. QualFrame, a research prototype, applies a codebook through a model provider's API and records every choice as a setting. QualBench scores the outputs against a reference, so the same outputs can be rescored under any scoring choice without new model calls.</p>
+
+  <h2 id="findings">What I found</h2>
+
+  <h3><span class="finding-num">01</span>Stable scores can hide unstable coding</h3>
+  <p>Four runs of the same configuration agreed with the human coding almost identically; MCC varied by 0.02 or less. However, the decisions beneath those scores were far less stable. Of the codes that at least one run applied, 64% for Haiku and 43% for Luna were not applied by all four runs. Said another way, two runs can reach the same score while disagreeing about which codes apply. Where individual codings are reviewed and used as evidence, that instability matters more than the stability of the summary.</p>
+  <figure class="wide">
+    <div class="figure-card"><img src="analytic-multiverse/fig3-hidden-instability.png" width="1600" height="596" loading="lazy" alt="Panel A: horizontal ranges of MCC. Across 16 configurations, Haiku ranged from 0.236 to 0.561 and Luna from 0.421 to 0.573, while four repeat runs spanned only 0.477 to 0.497 and 0.557 to 0.568. Panel B: bars showing that 64% of Haiku's and 43% of Luna's applied codes were not applied by all four runs."></div>
+    <figcaption><b>Stable summary agreement concealed unstable coding decisions.</b> Panel A shows observed ranges of MCC across the 16 configurations of each model and across four repeat runs of one configuration. Panel B shows, among codes applied by at least one repeat run, the share applied by all four (grey) and by fewer than four (orange).</figcaption>
+  </figure>
+
+  <h3><span class="finding-num">02</span>Setup choices mattered more than the model</h3>
+  <p>Across the 32 configurations, MCC ranged from 0.24 to 0.57, a spread about ten times the variation between repeat runs. The contrasts for task instructions, reasoning effort, and codebook division were each larger than the average difference between the two models. The seven best configurations all combined the &lsquo;decide every code&rsquo; instructions with the whole codebook in one request.</p>
+  <figure class="wide">
+    <div class="figure-card"><img src="analytic-multiverse/fig4-specification-curve.png" width="1600" height="1182" loading="lazy" alt="A specification curve: 32 configurations ranked by MCC from 0.236 to 0.573 with bootstrap intervals, the top seven highlighted. Beneath it, a dot matrix shows which choices each configuration used."></div>
+    <figcaption><b>Specification curve of the 32 configurations,</b> ranked by MCC with 95% bootstrap intervals over reports. Teal marks &lsquo;decide every code&rsquo; with the whole codebook; the grey band spans earlier runs of four models on the same reports. In the lower panel, a filled dot means the choice on the left was used.</figcaption>
+  </figure>
+
+  <h3><span class="finding-num">03</span>The choices interacted</h3>
+  <p>Asking the model to decide on every code raised MCC by 0.10 when the whole codebook was sent at once, but by only 0.02 when it was divided into five parts. High reasoning effort helped mainly when the model was asked only to find passages, and mainly for Haiku. A statement about the effect of any one choice is therefore conditional on the others, and a comparison of models at one fixed configuration answers a narrower question than it appears to.</p>
+  <figure class="wide">
+    <div class="figure-card"><img src="analytic-multiverse/fig5-interaction.png" width="1600" height="714" loading="lazy" alt="Two line charts, one per model. Moving from find passages to decide every code raised mean MCC steeply with the whole codebook (Haiku 0.40 to 0.53; Luna 0.49 to 0.57) but only slightly with the codebook in five parts (Haiku 0.44 to 0.46; Luna 0.45 to 0.47)."></div>
+    <figcaption><b>Deciding every code helped most when the whole codebook was sent at once.</b> Mean MCC by task instructions and codebook division for each model; each point averages four configurations.</figcaption>
+  </figure>
+
+  <h3><span class="finding-num">04</span>The reference shapes the answer</h3>
+  <p>The human annotations were made under their own rules: the annotators skipped Discussion sections and coded only techniques aimed at the target behaviour, while the models read whole reports. Configurations that coded more were therefore penalized partly for codings outside the reference's coverage, not only for errors. For example, the apparent cost of dividing the codebook was &minus;0.045 over all 94 codes but only &minus;0.011 over the 12 codes the annotators prioritized. Some of the variation in agreement is variation in alignment with one particular reference, which agreement statistics alone cannot distinguish from error.</p>
+  <figure class="wide">
+    <div class="figure-card"><img src="analytic-multiverse/fig7-scoring-scope.png" width="1600" height="547" loading="lazy" alt="Three panels of effect estimates under three scoring scopes. Deciding every code and high effort stay positive in every scope; the disadvantage of a five-part codebook is minus 0.045 over all 94 codes, minus 0.072 over 16 groups, and minus 0.011 over the 12 prioritized codes."></div>
+    <figcaption><b>Scoring scope changed the apparent effect of a coding choice.</b> Effects of three choices under three scoring scopes, with 95% bootstrap intervals over reports.</figcaption>
+  </figure>
+
+  <h3><span class="finding-num">05</span>Model rankings did not travel</h3>
+  <p>Four models that had nearly identical agreement on the 40 screening reports (0.563 to 0.577) diverged on 50 reports that were not used in screening, where Claude Sonnet 5.5 rose to 0.636 while the others stayed between 0.541 and 0.575. Nonetheless, a simple majority vote across the four models had agreement similar to the best of them (0.647), without anyone needing to know in advance which model was best, although it costs as much as all four runs together. This analysis was exploratory.</p>
+  <figure class="wide">
+    <div class="figure-card"><img src="analytic-multiverse/fig8-model-rankings.png" width="1600" height="764" loading="lazy" alt="Paired markers for four models and their majority vote. On the 40 screening reports the models cluster between 0.563 and 0.577; on the 50 excluded reports Sonnet reaches 0.636, others 0.541 to 0.575, and the majority vote 0.647."></div>
+    <figcaption><b>Model comparisons depended on which reports were scored.</b> Hollow circles: 40 screening reports. Squares with 95% intervals: 50 reports excluded from screening. The earlier runs used one configuration and an earlier software version.</figcaption>
+  </figure>
+
+  <h3><span class="finding-num">06</span>Near-best agreement was cheap</h3>
+  <p>Every configuration on the cost&ndash;agreement frontier was a Luna run. Luna with &lsquo;decide every code&rsquo;, the whole codebook, and low effort reached MCC 0.564 for US$0.18 per 40 reports, within 0.01 of the best screened configuration. Earlier runs with larger models reached 0.576 on the same reports at about 18 and 28 times that cost.</p>
+  <figure class="wide">
+    <div class="figure-card"><img src="analytic-multiverse/fig6-cost.png" width="1600" height="812" loading="lazy" alt="A scatter of cost against MCC on a log cost axis. A teal step line marks the frontier of Luna configurations; the labelled point reaches MCC 0.564 for US$0.18, while earlier Sol and Sonnet runs reach 0.576 at US$3.16 and US$4.94."></div>
+    <figcaption><b>Recorded cost and agreement of the 32 configurations</b> on 40 reports, with cost on a log scale. Teal points form the cost&ndash;agreement frontier; hollow squares show earlier runs of larger models.</figcaption>
+  </figure>
+
+  <h2 id="practice">What this means for practice</h2>
+  <p>For teams using AI-assisted coding, the results suggest four practices.</p>
+  <ol>
+    <li>Report prompts, model identifiers, settings, task scope, and scoring rules in full, and run sensitivity analyses on the choices with the largest contrasts here: task instructions, codebook presentation, and reasoning effort. Provider defaults are choices too.</li>
+    <li>Repeat at least one configuration, and report agreement between repeats at the level of individual codes, not only the summary score.</li>
+    <li>Where the reference's scope differs from the coding task, also report results for a scope that matches the reference.</li>
+    <li>Choose the agreement statistic in advance, and choose a configuration or model on some documents and confirm it on others.</li>
+  </ol>
+
+  <h2 id="agenda">An open research agenda</h2>
+  <p>One dataset cannot establish which choices matter in general; that requires evidence from many datasets, frameworks, and kinds of text. Progress does not require a coordinated project, only studies that can be compared. The questions I consider most pressing are:</p>
+  <ol>
+    <li>Which choices account for most of the variation in agreement, and does their ordering hold across datasets and frameworks?</li>
+    <li>Do model rankings survive changes to instructions, codebook presentation, scoring, and the documents scored?</li>
+    <li>Which properties of a code (e.g., its prevalence, abstraction, and overlap with other codes) predict whether its agreement is robust?</li>
+    <li>Do conclusions drawn from agreement hold when the quality of coding is judged directly?</li>
+  </ol>
+  <div class="panel">
+    <p class="panel-label">Running a comparable study</p>
+    <p>If you are evaluating AI-assisted coding against existing human coding, you can declare your multiverse before running it, include the choices with the largest contrasts here, repeat at least one configuration, and report six quantities: the noise floor, the specification curve, the variance decomposition, the cost&ndash;agreement frontier, code-level robustness, and rank stability. QualFrame, QualBench, and the declaration and analysis scripts from this study are openly available and can be adapted to other data. Studies reported this way can later be combined across datasets and frameworks.</p>
+  </div>
+  <figure class="wide">
+    <div class="figure-card"><img src="analytic-multiverse/fig2-staged-design.png" width="1600" height="521" loading="lazy" alt="Five boxes in sequence: declare, noise floor, screen, focus and confirm, with a dashed arrow feeding new questions back to screening and a bar underneath for rescoring every run."></div>
+    <figcaption><b>A staged design for exploring the multiverse.</b> Teal outlines mark stages completed in this study; the dashed outline marks the focus stage, not yet run; grey marks confirmation, done here only as an exploratory comparison.</figcaption>
+  </figure>
+  <p class="pull">Before AI-assisted coding can be relied on as a research instrument, we must establish how much its results depend on the choices made in configuring it.</p>
+
+  <h2 id="limitations">Limitations</h2>
+  <p>Agreement is not validity, and here the reference and the coding task differed in scope. The screen used one dataset of published English-language trial reports and two low-cost models, the half-fraction design cannot separate two-way interactions from three-way interactions, and the analyses of combining runs and of excluded reports were added after the screen. The specific estimates are best read as hypothesis generating; the aim is to learn which kinds of choice matter, which should outlast any one model.</p>
+
+  <h2 id="read">Read the full study</h2>
+  <div class="cite">
+    <p>van Allen, Z. (2026). <i>The analytic multiverse of AI-assisted directed content analysis: a framework, open tools, and a screening study</i> [Preprint]. PsyArXiv.</p>
+    <p>Code, materials, and derived data: <a href="https://doi.org/10.17605/OSF.IO/9287H" target="_blank" rel="noopener noreferrer">doi.org/10.17605/OSF.IO/9287H</a></p>
+    <p>QualFrame and QualBench: <a href="https://github.com/ZvanAllen/qualframe" target="_blank" rel="noopener noreferrer">github.com/ZvanAllen/qualframe</a></p>
+  </div>
+</main>
+
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <div class="page-footer-links">
+      <a href="../index.html">Home</a>
+      <a href="../index.html#research">Research</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="ai-directed-content-analysis.html">Methods guide</a>
+      <a href="../Zack_van_Allen_CV.pdf" download>Download CV</a>
+      <a href="https://github.com/ZvanAllen" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://scholar.google.ca/citations?user=ukUBURoAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+      <a href="https://www.linkedin.com/in/zack-van-allen-phd-mba-1a4377a2/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://x.com/Zack_van_Allen" target="_blank" rel="noopener noreferrer">X</a>
+    </div>
+    <div class="page-footer-copy">&copy; 2026 Zack van Allen &middot; Ottawa, Canada</div>
+  </div>
+</footer>
+</body>
+</html>
