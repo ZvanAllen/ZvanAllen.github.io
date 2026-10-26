@@ -49,6 +49,19 @@
   "mainEntityOfPage": "https://zackvanallen.com/methods/analytic-multiverse.html"
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "The analytic multiverse of AI-assisted qualitative coding: an explainer",
+  "description": "A plain-language, 8-minute walk-through of a screening study of 32 configurations of AI-assisted qualitative coding: which setup choices changed agreement with human coding, and what to report.",
+  "thumbnailUrl": "https://zackvanallen.com/methods/analytic-multiverse/explainer-poster.jpg",
+  "uploadDate": "2026-10-26",
+  "duration": "PT7M46S",
+  "contentUrl": "https://zackvanallen.com/methods/analytic-multiverse/explainer.mp4",
+  "embedUrl": "https://zackvanallen.com/methods/analytic-multiverse.html#video"
+}
+</script>
 <style>
   :root {
     color-scheme: light;
@@ -151,6 +164,8 @@
   figcaption { font-size: 0.9rem; line-height: 1.55; color: var(--muted); margin-top: 0.7rem; }
   figcaption b { color: var(--text); font-weight: 600; }
   .wide { margin-left: -4rem; margin-right: -4rem; }
+  .video-card { background: var(--figure-bg); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+  .video-card video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #fbf8f3; }
 
   .pull { font-family: var(--serif); font-size: 1.3rem; line-height: 1.45; color: var(--ink); border-left: 3px solid var(--accent); padding: 0.2rem 0 0.2rem 1.2rem; margin: 2rem 0; }
   .panel { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 1.2rem 1.35rem 0.4rem; margin: 1.25rem 0 1.5rem; }
@@ -197,6 +212,7 @@
 
   <div class="actions">
     <a class="btn btn-primary" href="https://doi.org/10.17605/OSF.IO/9287H" target="_blank" rel="noopener noreferrer">Preprint and materials (OSF)</a>
+    <a class="btn" href="#video">Watch the explainer (8 min)</a>
     <a class="btn" href="https://github.com/ZvanAllen/qualframe" target="_blank" rel="noopener noreferrer">QualFrame on GitHub</a>
     <a class="btn" href="ai-directed-content-analysis.html">Methods guide</a>
   </div>
@@ -208,6 +224,17 @@
     <div class="stat" role="listitem"><div class="stat-num">43&ndash;64%</div><div class="stat-label">of applied codes not repeated by all four identical runs</div></div>
     <div class="stat" role="listitem"><div class="stat-num">US$13.66</div><div class="stat-label">recorded API spend for the whole screen</div></div>
   </div>
+
+  <figure class="wide" id="video">
+    <div class="video-card">
+      <video controls preload="none" playsinline width="1920" height="1080" poster="analytic-multiverse/explainer-poster.jpg">
+        <source src="analytic-multiverse/explainer.mp4" type="video/mp4">
+        <track kind="captions" src="analytic-multiverse/explainer.vtt" srclang="en" label="English">
+        Your browser cannot play this video. <a href="analytic-multiverse/explainer.mp4">Download it (MP4, 18 MB)</a>.
+      </video>
+    </div>
+    <figcaption><b>Watch: an 8-minute explainer.</b> A plain-language walk-through of the study for readers new to AI-assisted coding, with captions (CC button). The narration uses a synthetic voice.</figcaption>
+  </figure>
 
   <h2 id="why">Why this matters</h2>
   <p>Large language models (LLMs) can now apply a qualitative codebook to interviews and documents far faster than a human team, and a growing literature reports how well they do so. However, most of these studies report one configuration (i.e., one set of choices used to produce and score the codes) and its agreement with human coding. A configuration is a stack of decisions: how documents are divided, how the codebook is presented, how the task is worded, which model and settings are used, and how agreement is counted. Few of these decisions have a single correct answer, and most are made once and left untested.</p>

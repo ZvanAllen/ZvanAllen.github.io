@@ -1,0 +1,449 @@
+WEBVTT
+
+00:00:01.400 --> 00:00:04.790
+When researchers use AI to
+help code qualitative data,
+
+00:00:04.790 --> 00:00:07.741
+they usually report one
+result, from one setup.
+
+00:00:08.121 --> 00:00:12.595
+This video explains why that result is
+only one of many that were possible,
+
+00:00:12.595 --> 00:00:16.055
+and what happened when 32
+setups were tested side by side.
+
+00:00:17.555 --> 00:00:21.606
+Qualitative coding means reading
+text, such as interviews or reports,
+
+00:00:21.606 --> 00:00:25.188
+and labelling passages with
+codes that capture what they say.
+
+00:00:25.568 --> 00:00:29.808
+In directed content analysis, the
+codes are not invented along the way.
+
+00:00:29.808 --> 00:00:32.616
+They come from an existing
+theory or framework,
+
+00:00:32.616 --> 00:00:34.885
+written down in advance as a codebook.
+
+00:00:35.265 --> 00:00:39.059
+A trained coder reads each
+document, decides which codes apply,
+
+00:00:39.059 --> 00:00:42.070
+and marks the passages
+that support each decision.
+
+00:00:43.570 --> 00:00:46.535
+Large language models,
+the technology behind AI
+
+00:00:46.535 --> 00:00:49.499
+chatbots, can now do a
+first pass of this work.
+
+00:00:49.879 --> 00:00:53.456
+The model is given the codebook,
+a document, and instructions,
+
+00:00:53.456 --> 00:00:57.265
+and it returns the codes it thinks
+apply, with quotes as evidence.
+
+00:00:57.645 --> 00:01:01.082
+To check its work, researchers
+compare the AI's codes with
+
+00:01:01.082 --> 00:01:04.876
+codes from trained human coders,
+and report how well they agree.
+
+00:01:06.376 --> 00:01:11.093
+This study measures agreement with the
+Matthews correlation coefficient, or MCC.
+
+00:01:11.473 --> 00:01:15.246
+Think of it as a score where 0
+means the AI matches the human
+
+00:01:15.246 --> 00:01:18.958
+coders no better than chance,
+and 1 means perfect agreement.
+
+00:01:19.338 --> 00:01:23.146
+It counts both kinds of mistake:
+codes the AI applied that the
+
+00:01:23.146 --> 00:01:27.077
+humans did not, and codes the
+humans applied that the AI missed.
+
+00:01:28.577 --> 00:01:31.809
+However, every reported score
+rests on a stack of choices.
+
+00:01:32.189 --> 00:01:36.811
+How much text does the model read at once?
+Is the codebook sent whole, or in parts?
+
+00:01:36.811 --> 00:01:41.433
+How are the instructions worded? Which
+model is used, and how hard should it think?
+
+00:01:41.813 --> 00:01:43.698
+Then, when the results are scored:
+
+00:01:43.698 --> 00:01:47.359
+whose coding counts as the reference,
+and which statistic is used?
+
+00:01:47.739 --> 00:01:52.150
+Each of these choices is defensible,
+and few have a single right answer.
+
+00:01:52.150 --> 00:01:57.296
+With three options at each of nine choices,
+there are nearly 20,000 possible setups.
+
+00:01:57.676 --> 00:02:00.475
+Every published result is
+one path through this maze.
+
+00:02:01.975 --> 00:02:04.958
+Researchers in psychology
+met a similar problem,
+
+00:02:04.958 --> 00:02:07.257
+known as the garden of forking paths:
+
+00:02:07.257 --> 00:02:11.980
+with many reasonable choices, analysts
+can arrive at very different results.
+
+00:02:12.360 --> 00:02:16.807
+One answer was multiverse analysis.
+Rather than reporting a single path,
+
+00:02:16.807 --> 00:02:21.316
+you run the defensible alternatives
+and report how much the results move.
+
+00:02:21.696 --> 00:02:25.771
+The preprint adapts this idea to
+AI-assisted qualitative coding.
+
+00:02:27.271 --> 00:02:31.199
+To see which choices matter,
+the study used a public dataset:
+
+00:02:31.199 --> 00:02:33.711
+40 reports of smoking-cessation trials,
+
+00:02:33.711 --> 00:02:37.059
+already coded by trained
+annotators for 94 behaviour
+
+00:02:37.059 --> 00:02:40.794
+change techniques, such as
+goal setting or social support.
+
+00:02:41.174 --> 00:02:45.611
+Two low-cost models, Claude
+Haiku 5.5 and GPT-6 Luna,
+
+00:02:45.611 --> 00:02:48.876
+coded the reports under 16 setups each.
+
+00:02:49.256 --> 00:02:52.469
+The setups varied five
+choices: asking the model to
+
+00:02:52.469 --> 00:02:55.619
+find relevant passages or
+to decide on every code;
+
+00:02:55.619 --> 00:03:00.282
+sending the codebook whole or in five
+parts; low or high reasoning effort;
+
+00:03:00.282 --> 00:03:04.125
+two wordings of the instructions;
+and the order of the codes.
+
+00:03:04.505 --> 00:03:07.272
+One setup per model was
+also run four times,
+
+00:03:07.272 --> 00:03:10.480
+to see how much the results
+change by chance alone.
+
+00:03:10.860 --> 00:03:13.559
+Two open-source tools made this practical:
+
+00:03:13.559 --> 00:03:16.387
+QualFrame records every
+choice as a setting,
+
+00:03:16.387 --> 00:03:21.143
+and QualBench scores every run. The
+whole screen cost about 14 US dollars.
+
+00:03:22.643 --> 00:03:28.134
+Here is what the study found.
+First, setup choices mattered.
+
+00:03:28.134 --> 00:03:32.801
+Across the 32 setups, MCC
+ranged from 0.24 to 0.57.
+
+00:03:33.181 --> 00:03:36.625
+The same models, reading the same
+reports with the same codebook,
+
+00:03:36.625 --> 00:03:40.387
+could look much worse or much better
+depending on how they were set up.
+
+00:03:40.767 --> 00:03:43.588
+The seven best setups all
+asked the model to decide
+
+00:03:43.588 --> 00:03:46.463
+on every code, with the
+whole codebook sent at once.
+
+00:03:46.843 --> 00:03:51.017
+And on average, the instructions, the
+reasoning effort, and how the codebook was
+
+00:03:51.017 --> 00:03:55.035
+divided each made a bigger difference
+than the choice between the two models.
+
+00:03:56.535 --> 00:03:59.511
+Second, a stable score
+can hide unstable coding.
+
+00:03:59.891 --> 00:04:03.580
+When one setup was run
+four times, the four scores
+
+00:04:03.580 --> 00:04:07.047
+were almost identical,
+varying by 0.02 or less.
+
+00:04:07.427 --> 00:04:12.927
+But underneath, the coding decisions
+changed. Of the codes that at least one
+
+00:04:12.927 --> 00:04:18.572
+run applied, 64% for Haiku and 43% for
+Luna were not applied by all four runs.
+
+00:04:18.952 --> 00:04:23.399
+Two runs can earn the same score while
+disagreeing about which codes apply,
+
+00:04:23.399 --> 00:04:27.016
+which matters whenever individual
+codes are used as evidence.
+
+00:04:28.516 --> 00:04:30.247
+Third, the choices interacted.
+
+00:04:30.627 --> 00:04:36.982
+Asking the model to decide on every code
+raised MCC by 0.10 when the whole codebook
+
+00:04:36.982 --> 00:04:43.030
+was sent at once, but by only 0.02 when
+the codebook was split into five parts.
+
+00:04:43.410 --> 00:04:47.003
+So the effect of one choice depends
+on the others, and comparing
+
+00:04:47.003 --> 00:04:50.989
+models at one fixed setup answers a
+narrower question than it seems to.
+
+00:04:52.488 --> 00:04:54.638
+Fourth, the human reference
+shapes the answer.
+
+00:04:55.018 --> 00:04:57.345
+The annotators followed their own rules.
+
+00:04:57.345 --> 00:05:00.777
+For example, they skipped each
+report's Discussion section,
+
+00:05:00.777 --> 00:05:03.686
+while the models read
+everything, so some apparent
+
+00:05:03.686 --> 00:05:06.362
+AI mistakes were simply
+outside the reference.
+
+00:05:06.742 --> 00:05:09.914
+How agreement is scored matters too.
+
+00:05:09.914 --> 00:05:14.408
+Dividing the codebook
+appeared to cost 0.045 in MCC
+
+00:05:14.408 --> 00:05:18.109
+across all 94 codes, but only 0.011 across
+
+00:05:18.109 --> 00:05:21.986
+the 12 codes the
+annotators had prioritized.
+
+00:05:22.366 --> 00:05:26.575
+And a different statistic, balanced
+accuracy, picked a different setup as best.
+
+00:05:28.075 --> 00:05:32.260
+Fifth, model rankings did not
+travel. In earlier runs, four models,
+
+00:05:32.260 --> 00:05:37.321
+including two larger ones, scored almost
+identically on the 40 screening reports.
+
+00:05:37.701 --> 00:05:40.414
+On 50 reports that had been set aside,
+
+00:05:40.414 --> 00:05:43.983
+they pulled apart, and
+Claude Sonnet rose to 0.64.
+
+00:05:44.363 --> 00:05:47.357
+A simple majority vote
+across the four did about as
+
+00:05:47.357 --> 00:05:50.232
+well as the best of them,
+without needing to know
+
+00:05:50.232 --> 00:05:53.284
+which model that would be,
+although it costs as much
+
+00:05:53.284 --> 00:05:56.219
+as all four runs. This
+comparison was exploratory.
+
+00:05:57.719 --> 00:06:00.905
+Finally, good agreement did
+not require an expensive setup.
+
+00:06:01.285 --> 00:06:04.456
+One Luna setup came
+within 0.01 of the best
+
+00:06:04.456 --> 00:06:07.626
+score for about 18 US
+cents per 40 reports.
+
+00:06:07.626 --> 00:06:10.870
+Earlier runs with larger
+models scored about
+
+00:06:10.870 --> 00:06:14.187
+the same, at roughly 18
+to 28 times the cost.
+
+00:06:15.687 --> 00:06:20.194
+For teams using AI-assisted coding,
+the results suggest four practices.
+
+00:06:20.574 --> 00:06:23.261
+One: report the full
+setup, including prompts,
+
+00:06:23.261 --> 00:06:25.831
+model versions, settings,
+and scoring rules,
+
+00:06:25.831 --> 00:06:30.212
+and test whether the results hold when
+the most influential choices change.
+
+00:06:30.592 --> 00:06:33.399
+Two: repeat at least one
+setup, and compare the
+
+00:06:33.399 --> 00:06:36.683
+repeats code by code, not
+only by their overall scores.
+
+00:06:37.063 --> 00:06:40.518
+Three: where the human reference
+covers less than the AI was
+
+00:06:40.518 --> 00:06:44.088
+asked to code, also score the
+AI on what the reference covers.
+
+00:06:44.468 --> 00:06:47.196
+Four: choose the agreement
+statistic in advance,
+
+00:06:47.196 --> 00:06:50.720
+and pick a setup on some documents,
+then confirm it on others.
+
+00:06:52.220 --> 00:06:56.514
+One study on one dataset cannot say
+which choices matter in general.
+
+00:06:56.514 --> 00:07:01.692
+That needs comparable studies across many
+datasets, frameworks, and kinds of text.
+
+00:07:02.072 --> 00:07:05.555
+This does not need a coordinated
+project, only studies
+
+00:07:05.555 --> 00:07:09.231
+that can be compared. The
+preprint offers open questions,
+
+00:07:09.231 --> 00:07:11.940
+open tools, and a common reporting format,
+
+00:07:11.940 --> 00:07:15.939
+so any team with coded qualitative
+data can run its own study.
+
+00:07:16.319 --> 00:07:21.234
+If the same choices matter across datasets,
+that could inform default settings and
+
+00:07:21.234 --> 00:07:26.149
+reporting guidance. If not, setups should
+be tuned and confirmed for each project.
+
+00:07:26.529 --> 00:07:30.542
+Before AI-assisted coding can be
+relied on as a research instrument,
+
+00:07:30.542 --> 00:07:35.500
+we must establish how much its results
+depend on the choices made in configuring it.
+
+00:07:37.000 --> 00:07:40.636
+The write-up, the preprint, and the
+open tools are linked on screen.
